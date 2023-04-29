@@ -24,14 +24,14 @@
 
 <body>
 <div class="mx-auto">
-    <header class="masthead mb-auto scrolled p-4" style="color: var(--white)">
+    <header class="masthead mb-auto p-4" style="color: var(--white); background-color: #1e1e1e;">
         <div class="inner">
             <a href="/"><img class="masthead-brand" src="/assets/img/banner.png" style="height: 3.5rem;" alt="Just Better"/></a>
         </div>
     </header>
 
-    <main role="main">
-        <div class="d-flex flex-column w-100 introduction">
+    <main role="main" style="padding-top: 7rem;">
+        <div class="d-md-flex flex-column w-100 introduction">
             <!--<div class="carousel slide carousel-fade fullscreen-image" data-ride="carousel">
                 <div class="carousel-inner">
                     <?php
@@ -45,7 +45,7 @@
                     } ?>
                 </div>
             </div>-->
-            <div class="text-center d-flex sites mw-100 justify-content-center">
+            <div class="text-center d-flex flex-wrap sites mw-100 justify-content-center">
                 <a href="https://jellyfinbetter.fr" class="site">
                     <img src="/assets/img/logos/jellyfinbetter.png" href="#" class="presentation-icon" alt="Jellyfin Better logo" />
                     <h2>Jellyfin Better</h2>

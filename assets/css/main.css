@@ -86,10 +86,8 @@ code {
 }
 
 footer {
-    position: fixed;
-    bottom: 1rem;
-    left: 0;
-    right: 0;
+    height: 7rem;
+    padding: 1rem;
 }
 
 header {
@@ -139,19 +137,13 @@ header.scrolled {
 /******
  Navbar 
  ******/
+
 .masthead-brand {
-    display: none;
+    float: left;
 }
 
-@media (min-width: 48em) {
-    .masthead-brand {
-        float: left;
-        display: initial;
-    }
-
-    .nav-masthead {
-        float: right;
-    }
+.nav-masthead {
+    float: right;
 }
 
 .nav-link.active {
@@ -165,7 +157,7 @@ header.scrolled {
     position: relative;
     justify-content: center;
     color: var(--white);
-    height: 100vh;
+    min-height: calc(100vh - 14rem);
 }
 
 .introduction #buttons {
@@ -290,18 +282,22 @@ header.scrolled {
     max-width: 650px;
 }
 
-.sites{
+.sites {
     gap: 3rem;
 }
-.site{
+
+.site {
     transition: transform 0.5s;
 }
-.site:hover{
+
+.site:hover {
     transform: scale(1.1);
 }
-.site img{
+
+.site img {
     transition: transform 0.5s;
 }
-.site:hover img{
+
+.site:hover img {
     transform: translate(0, -25px);
 }
