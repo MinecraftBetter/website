@@ -1,24 +1,26 @@
-for (let site of document.getElementsByClassName("site")) site.addEventListener("click", changeSite);
+let selectedSite = location.hash.slice(1);
+for (let site of document.getElementsByClassName("site")) {
+    changeColor(document.getElementById(site.dataset.article), site);
+    site.addEventListener("click", function() { changeSite(this); });
+    if(site.dataset.article === selectedSite) changeSite(site);
+}
 
-function changeSite(){
-    let button = this;
-    let siteList = document.getElementById("introduction");
-    let wasSmall = siteList.classList.contains("small");
-    if (!wasSmall) siteList.classList.add("small");
+function changeColor(elem, btn){
+    elem.style.setProperty('--primary', btn.dataset.maincolor);
+    elem.style.setProperty('--secondary', btn.dataset.secondarycolor);
+}
+
+function changeSite(btn) {
+    changeColor(document.querySelector("header.masthead"), btn);
 
     for (let s of document.getElementsByClassName("site")) {
-        if (s === button) button.classList.add("clicked");
+        if (s === this) btn.classList.add("clicked");
         else s.classList.remove("clicked");
     }
 
-    setTimeout(function () {
-        let detailPanelList = document.getElementById("details");
-        detailPanelList.classList.remove("d-none");
-        detailPanelList.classList.add("d-flex");
-
-        for (let article of document.getElementsByClassName("site-details")) {
-            if (article.id === button.dataset.article) article.classList.remove("hidden");
-            else article.classList.add("hidden");
-        }
-    }, wasSmall ? 0 : 1000);
+    location.hash = "#" + btn.dataset.article;
+    window.scrollTo({
+        top: document.getElementById(btn.dataset.article).offsetTop - 5.5 * parseFloat(getComputedStyle(document.documentElement).fontSize),
+        behavior: 'smooth'
+    });
 }
