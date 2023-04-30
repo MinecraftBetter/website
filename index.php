@@ -19,7 +19,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="assets/css/main.css" rel="stylesheet"/>
 
-    <script src="assets/js/bootstrap.min.js"></script>
+    <!--<script src="assets/js/bootstrap.min.js"></script>-->
 </head>
 
 <body>
@@ -30,51 +30,36 @@
         </div>
     </header>
 
-    <main role="main" style="padding-top: 7rem;">
-        <div class="d-md-flex flex-column w-100 introduction">
-            <!--<div class="carousel slide carousel-fade fullscreen-image" data-ride="carousel">
-                <div class="carousel-inner">
-                    <?php
-                    $files = glob('assets/img/home/background/*.{jpg,png,gif}', GLOB_BRACE);
-                    $class = "active";
-                    foreach ($files as $file) { ?>
-                        <div class="carousel-item <?= $class ?>">
-                            <div style="background-image: url('<?= $file ?>')" class="img"></div>
-                        </div>
-                        <?php $class = "";
-                    } ?>
-                </div>
-            </div>-->
-            <div class="text-center d-flex flex-wrap sites mw-100 justify-content-center">
-                <a href="https://jellyfinbetter.fr" class="site">
-                    <img src="/assets/img/logos/jellyfinbetter.png" href="#" class="presentation-icon" alt="Jellyfin Better logo" />
+    <main role="main" style="padding-top: 7rem; min-height: calc(100vh - 7rem);">
+        <div class="d-md-flex flex-column w-100 introduction" id="introduction">
+            <div class="text-center sites mw-100">
+                <button class="btn text-white site" data-article="jellyfinbetter">
+                    <img src="/assets/img/logos/jellyfinbetter.png" href="#" class="presentation-icon" alt="Jellyfin Better logo"/>
                     <h2>Jellyfin Better</h2>
-                </a>
-                <?php
-                /*
-                <a href="https://jellybook.jellyfinbetter.fr" class="site">
-                    <img src="/assets/img/logos/jellybook.png" href="#" class="presentation-icon" alt="Jellybook logo" />
-                    <h2>Jellybook</h2>
-                </a>
-                <a href="https://jellysong.jellyfinbetter.fr" class="site">
-                    <img src="/assets/img/logos/jellysong.png" href="#" class="presentation-icon" alt="jellysong logo" />
-                    <h2>Jellysong</h2>
-                </a>
-                 */
-                ?>
-                <a href="https://place.minecraftbetter.com" class="site">
-                    <img src="/assets/img/logos/betterplace.png" href="#" class="presentation-icon" alt="Better Place logo" />
+                </button>
+                <button class="btn text-white site" data-article="betterplace">
+                    <img src="/assets/img/logos/betterplace.png" href="#" class="presentation-icon" alt="Better Place logo"/>
                     <h2>Better Place</h2>
-                </a>
-                <a href="https://minecraftbetter.com" class="site">
-                    <img src="/assets/img/logos/minecraftbetter.png" href="#" class="presentation-icon" alt="Minecraft Better logo" />
+                </button>
+                <button class="btn text-white site" data-article="minecraftbetter">
+                    <img src="/assets/img/logos/minecraftbetter.png" href="#" class="presentation-icon" alt="Minecraft Better logo"/>
                     <h2>Minecraft Better</h2>
-                </a>
-                <a href="https://gameyfin.jellyfinbetter.fr" class="site">
-                    <img src="/assets/img/logos/gameyfin.png" href="#" class="presentation-icon" alt="Gameyfin logo" />
+                </button>
+                <button class="btn text-white site" data-article="gameyfin">
+                    <img src="/assets/img/logos/gameyfin.png" href="#" class="presentation-icon" alt="Gameyfin logo"/>
                     <h2>Gameyfin</h2>
-                </a>
+                </button>
             </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4" id="details">
+            <article class="site-details hidden" id="jellyfinbetter">
+                <h2 class="mb-4">Jellyfin Better</h2>
+                <p>Sur <strong>Jellyfin Better</strong>, vous trouverez films, séries et animés.</p>
+                <p>Le catalogue est constamment enrichit grace à vos requêtes faites sur <a href="https://request.jellyfinbetter.fr">la plateforme dédiée</a>.</p>
+            </article>
+            <article class="site-details hidden" id="betterplace">
+                <h2 class="mb-4">Better Place</h2>
+            </article>
         </div>
     </main>
 
@@ -85,5 +70,6 @@
         </div>
     </footer>
 </div>
+<script src="/assets/js/main.js"></script>
 </body>
 </html>

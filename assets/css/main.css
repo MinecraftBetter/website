@@ -12,7 +12,7 @@ body {
 a,
 a:focus,
 a:hover {
-    color: inherit;
+    color: lightgray;
     text-decoration: none;
 }
 
@@ -158,6 +158,18 @@ header.scrolled {
     justify-content: center;
     color: var(--white);
     min-height: calc(100vh - 14rem);
+    transition: min-height 1s;
+}
+.introduction .presentation-icon{
+    transition: width 1s;
+}
+
+.introduction.small{
+    min-height: 100px;
+    height: 100px;
+}
+.introduction.small .presentation-icon{
+    width: 50px;
 }
 
 .introduction #buttons {
@@ -235,34 +247,6 @@ header.scrolled {
     border-radius: 5%;
 }
 
-.panel {
-    width: 90%;
-    margin: -30px auto 0;
-    background: #343434;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-}
-
-.panel > * {
-    margin: 0 auto;
-    max-width: 900px;
-}
-
-@media (max-width: 229px) {
-    .panel {
-        margin: 0;
-        width: 100%;
-        padding: 1em;
-    }
-}
-
-@media (min-width: 830px) {
-    .panel {
-        padding: 30px calc(50% - 50vw + 5em);
-    }
-}
-
 .description {
     color: #eaeaea;
     font-size: 1.15em;
@@ -282,15 +266,26 @@ header.scrolled {
     max-width: 650px;
 }
 
-.sites {
-    gap: 3rem;
+.introduction {
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+.introduction .sites .site > h2{
+    transition: font-size 1s;
+}
+.introduction.small .sites .site > h2{
+    font-size: 1rem;
 }
 
 .site {
     transition: transform 0.5s;
 }
+.site:focus {
+    box-shadow: none;
+}
 
-.site:hover {
+.site:hover, .site.clicked {
     transform: scale(1.1);
 }
 
@@ -298,6 +293,17 @@ header.scrolled {
     transition: transform 0.5s;
 }
 
-.site:hover img {
-    transform: translate(0, -25px);
+.site:hover img, .site.clicked img {
+    transform: translate(0, -10%);
+}
+.site-details.hidden {
+    display: none;
+}
+.site-details {
+    background-color: #343434;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
 }
