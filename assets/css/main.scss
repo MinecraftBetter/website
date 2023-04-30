@@ -330,9 +330,14 @@ body.details {
         }
 
         .sites {
+            font-size: 0;
+
             .site {
                 padding: .375rem .85rem .375rem .75rem;
                 background: var(--secondary);
+                &:not(:last-child){
+                    margin-right: .5rem;
+                }
 
                 img {
                     width: 35px;

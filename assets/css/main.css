@@ -254,13 +254,17 @@ body.details {
     border-radius: 0 0 1rem 1rem; }
     body.details .masthead .masthead-brand {
       height: 3rem; }
-    body.details .masthead .sites .site {
-      padding: .375rem .85rem .375rem .75rem;
-      background: var(--secondary); }
-      body.details .masthead .sites .site img {
-        width: 35px; }
-      body.details .masthead .sites .site span {
-        vertical-align: middle; }
+    body.details .masthead .sites {
+      font-size: 0; }
+      body.details .masthead .sites .site {
+        padding: .375rem .85rem .375rem .75rem;
+        background: var(--secondary); }
+        body.details .masthead .sites .site:not(:last-child) {
+          margin-right: .5rem; }
+        body.details .masthead .sites .site img {
+          width: 35px; }
+        body.details .masthead .sites .site span {
+          vertical-align: middle; }
   body.details .site-details {
     background-color: #343434;
     box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
