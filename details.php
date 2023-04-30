@@ -17,6 +17,7 @@
     <meta name="description" content="Everything is just better when it's on Just Better™">
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/fontawesome.min.css" rel="stylesheet"/>
     <link href="assets/css/main.css" rel="stylesheet"/>
 </head>
 
@@ -88,10 +89,10 @@
                 </p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://jellyfin.jellyfinbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-photo-video"></i>Jellyfin
+                        <i class="fas fa-photo-video" aria-hidden="true"></i>Jellyfin
                     </a>
                     <a href="https://request.jellyfinbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-bullhorn"></i>Requêtes / Problèmes
+                        <i class="fas fa-bullhorn" aria-hidden="true"></i>Requêtes / Problèmes
                     </a>
                 </p>
             </article>
@@ -107,7 +108,7 @@
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://place.justbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-photo-video"></i>Accéder au service
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
             </article>
@@ -123,7 +124,7 @@
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://minecraft.justbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-photo-video"></i>Accéder au service
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
             </article>
@@ -139,7 +140,7 @@
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://gameyfin.jellyfinbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-photo-video"></i>Accéder au service
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
             </article>

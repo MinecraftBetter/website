@@ -17,6 +17,7 @@
     <meta name="description" content="Everything is just better when it's on Just Better™">
 
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/fontawesome.min.css" rel="stylesheet"/>
     <link href="assets/css/main.css" rel="stylesheet"/>
 </head>
 
