@@ -148,8 +148,9 @@
 
     <footer class="mt-auto text-center">
         <div class="inner">
-            <p><span id="txt-credit">This website was made with ❤ by</span> <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
-            <p><span id="txt-credit-server">This server is generously hosted by</span> <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
+            <p>Ce site a été codé avec ❤ par <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
+            <p>Ce serveur est généreusement hébergé par <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
+            <p>Le design a été imaginé par <a href="https://github.com/MazeWave" style="font-weight: 600;">Louis Dalmasso</a></p>
         </div>
     </footer>
 </div>
