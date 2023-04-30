@@ -28,21 +28,21 @@
             <a href="/"><img class="masthead-brand" src="/assets/img/logos/justbetter.png" alt="Just Better"/></a>
         </div>
         <div class="text-center sites" id="introduction">
-            <button class="btn text-white site" data-article="jellyfinbetter" data-maincolor="#868DDC" data-secondarycolor="#666ca9">
+            <button class="btn text-white site" id="btn-jellyfinbetter" data-article="jellyfinbetter" data-maincolor="#868DDC" data-secondarycolor="#666ca9">
                 <img src="/assets/img/logos/jellyfinbetter.png" class="presentation-icon" alt="Jellyfin Better logo"/>
                 <span>Jellyfin Better</span>
             </button>
-            <button class="btn text-white site" data-article="betterplace" data-maincolor="#47cc5d" data-secondarycolor="#359945">
-                <img src="/assets/img/logos/betterplace.png" class="presentation-icon" alt="Better Place logo"/>
-                <span>Better Place</span>
-            </button>
-            <button class="btn text-white site" data-article="minecraftbetter" data-maincolor="#ff5050" data-secondarycolor="#cc4040">
+            <button class="btn text-white site" id="btn-minecraftbetter" data-article="minecraftbetter" data-maincolor="#ff5050" data-secondarycolor="#cc4040">
                 <img src="/assets/img/logos/minecraftbetter.png" class="presentation-icon" alt="Minecraft Better logo"/>
                 <span>Minecraft Better</span>
             </button>
-            <button class="btn text-white site" data-article="gameyfin" data-maincolor="#ff9932" data-secondarycolor="#e3702d">
+            <button class="btn text-white site" id="btn-gameyfin" data-article="gameyfin" data-maincolor="#ff9932" data-secondarycolor="#e3702d">
                 <img src="/assets/img/logos/gameyfin.png" class="presentation-icon" alt="Gameyfin logo"/>
                 <span>Gameyfin</span>
+            </button>
+            <button class="btn text-white site" id="btn-betterplace" data-article="betterplace" data-maincolor="#47cc5d" data-secondarycolor="#359945">
+                <img src="/assets/img/logos/betterplace.png" class="presentation-icon" alt="Better Place logo"/>
+                <span>Better Place</span>
             </button>
         </div>
     </header>
@@ -59,19 +59,19 @@
                 </div>
                 <p>Sur <strong>Jellyfin Better</strong>, vous trouverez films, séries et animés.</p>
                 <p>
-                    Le catalogue est constamment enrichi grâce à vos requêtes faites sur <a href="https://request.jellyfinbetter.fr">la plateforme dédiée</a>.<br/>
-                    S'il a un problème avec un des films/séries/animés, merci de le signaler sur cette <a href="https://request.jellyfinbetter.fr">même plateforme</a>.
+                    Le catalogue est constamment enrichi grâce à vos requêtes faites sur <a href="https://request.justbetter.fr">la plateforme dédiée</a>.<br/>
+                    S'il a un problème avec un des films/séries/animés, merci de le signaler sur cette <a href="https://request.justbetter.fr">même plateforme</a>.
                 </p>
                 <p>
-                    Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.jellyfinbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.<br/>
+                    Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.<br/>
                     Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/7g7AURRjmX">notre Discord</a> et d'y rester sous peine d'un
                     bannissement.<br/>
                     <small>(merci de contacter <strong><em>Tiago#9070</em></strong> pour toute contestation)</small><br/>
                     Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
                 </p>
                 <p>
-                    Toute personne étrangère à l'équipe d'administration peut faire l'objet d'un bannissement temporaire, le temps d'établir contact avec elle afin de savoir qui
-                    l'as invitée sur le service.<br/>
+                    Toute personne étrangère à l'équipe d'administration peut faire l'objet d'un bannissement temporaire, le temps d'établir un contact avec elle afin de savoir qui
+                    l'a invitée sur le service.<br/>
                     Pour simplifier la procédure et éviter tout désagrément, vous pouvez simplement envoyer un message dans le salon <code>Général</code> du serveur Discord en
                     mentionnant qui vous a communiqué le lien du serveur.
                 </p>
@@ -91,24 +91,8 @@
                     <a href="https://jellyfin.jellyfinbetter.fr/" class="btn btn-lg">
                         <i class="fas fa-photo-video" aria-hidden="true"></i>Jellyfin
                     </a>
-                    <a href="https://request.jellyfinbetter.fr/" class="btn btn-lg">
+                    <a href="https://request.justbetter.fr/" class="btn btn-lg">
                         <i class="fas fa-bullhorn" aria-hidden="true"></i>Requêtes / Problèmes
-                    </a>
-                </p>
-            </article>
-            <article class="site-details" id="betterplace">
-                <div class="head d-flex mb-4">
-                    <img src="/assets/img/logos/betterplace.png" alt="Better Place logo" style="height:75px;"/>
-                    <div class="ml-3 d-flex flex-column justify-content-center">
-                        <h2 class="mb-0">Better Place</h2>
-                        <p class="mb-0">Toile de dessin collaborative</p>
-                    </div>
-                </div>
-                <p>Sur <strong>Better Place</strong>, vous pourrez dessiner sur une grande toile collaborative à la manière de <a href="https://www.reddit.com/r/place">r/place</a>.</p>
-
-                <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://place.justbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
             </article>
@@ -133,13 +117,31 @@
                     <img src="/assets/img/logos/gameyfin.png" alt="Gameyfin logo" style="height:75px;"/>
                     <div class="ml-3 d-flex flex-column justify-content-center">
                         <h2 class="mb-0">Gameyfin</h2>
-                        <p class="mb-0"></p>
+                        <p class="mb-0">Des jeux en toute légalité et sans DRM</p>
                     </div>
                 </div>
-                <p></p>
+                <p><strong>Gameyfin</strong> est une plateforme ne contenant que des jeux <strong>sans DRM</strong> obtenus de manière <strong>légale</strong>.</p>
+                <p>Si vous souhaitez participer à l'étoffement du catalogue, merci de contacter <strong><em>Mika#7625</em></strong>.</p>
+                <p>Dû à la quantité de jeux mis à votre disposition, tous n'ont pu être testé, si un jeu ne se lance pas, merci de nous en informer.</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://gameyfin.jellyfinbetter.fr/" class="btn btn-lg">
+                    <a href="https://gameyfin.justbetter.fr/" class="btn btn-lg">
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
+                    </a>
+                </p>
+            </article>
+            <article class="site-details" id="betterplace">
+                <div class="head d-flex mb-4">
+                    <img src="/assets/img/logos/betterplace.png" alt="Better Place logo" style="height:75px;"/>
+                    <div class="ml-3 d-flex flex-column justify-content-center">
+                        <h2 class="mb-0">Better Place</h2>
+                        <p class="mb-0">Toile de dessin collaborative</p>
+                    </div>
+                </div>
+                <p>Sur <strong>Better Place</strong>, vous pourrez dessiner sur une grande toile collaborative à la manière de <a href="https://www.reddit.com/r/place">r/place</a>.</p>
+
+                <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
+                    <a href="https://place.justbetter.fr/" class="btn btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
@@ -152,6 +154,7 @@
             <p>Ce site a été codé avec ❤ par <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
             <p>Ce serveur est généreusement hébergé par <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
             <p>Le design a été imaginé par <a href="https://github.com/MazeWave" style="font-weight: 600;">Louis Dalmasso</a></p>
+            <p>Merci à <a href="https://github.com/Mikaleplubo" style="font-weight: 600;">Mika </a> <small style="font-size: 7px;">(le 🐐)</small> pour son investissement quotidien dans le serveur</p>
         </div>
     </footer>
 </div>
