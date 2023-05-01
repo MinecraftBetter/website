@@ -104,7 +104,8 @@
                         <p class="mb-0">Un serveur Minecraft ¯\_(ツ)_/¯</p>
                     </div>
                 </div>
-                <p></p>
+                <p><strong>Minecraft Better</strong> est un serveur évènementiel proposant survie et mini-jeux.</p>
+                <p class="mt-3 mb-3 text-warning">Le serveur est actuellement fermé</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://minecraft.justbetter.fr/" class="btn btn-lg">
@@ -139,6 +140,8 @@
                     </div>
                 </div>
                 <p>Sur <strong>Better Place</strong>, vous pourrez dessiner sur une grande toile collaborative à la manière de <a href="https://www.reddit.com/r/place">r/place</a>.</p>
+                <p>Seul ou à plusieurs, contribuez à remplir la toile avec de nombreux dessins.</p>
+                <p class="mt-3 text-warning">Toute tentative de vandalisme est strictement interdite et conduira inéluctablement au bannissement du mis en cause.</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://place.justbetter.fr/" class="btn btn-lg">
