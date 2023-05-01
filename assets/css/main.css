@@ -261,6 +261,9 @@ body.details {
         background: var(--secondary); }
         body.details .masthead .sites .site:not(:last-child) {
           margin-right: .5rem; }
+        body.details .masthead .sites .site.clicked {
+          transform: none;
+          filter: brightness(85%); }
         body.details .masthead .sites .site img {
           width: 35px; }
         body.details .masthead .sites .site span {

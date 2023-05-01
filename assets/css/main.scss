@@ -338,6 +338,10 @@ body.details {
                 &:not(:last-child){
                     margin-right: .5rem;
                 }
+                &.clicked {
+                    transform: none;
+                    filter: brightness(85%);
+                }
 
                 img {
                     width: 35px;
