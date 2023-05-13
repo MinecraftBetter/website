@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="0aa0ba98-3a50-4918-94f0-6a0084366b11" name="Tiago" url="https://justbetter.fr">
-        <fileTransfer rootFolder="/var/www" accessType="SFTP" host="minecraftbetter.com" port="1025" sshConfigId="272499b9-f6f3-4cf7-83f6-4edf937cf0f6" sshConfig="Tiago" keyPair="true">
+        <fileTransfer rootFolder="/var/www" accessType="SFTP" host="justbetter.fr" port="1025" sshConfigId="272499b9-f6f3-4cf7-83f6-4edf937cf0f6" sshConfig="Tiago" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
