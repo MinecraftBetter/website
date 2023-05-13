@@ -32,19 +32,19 @@
     <main role="main" style="padding-top: 7rem; min-height: calc(100vh - 7rem);">
         <div class="d-md-flex flex-column w-100 introduction" id="introduction">
             <div class="text-center sites mw-100">
-                <a class="btn text-white site" href="/details.php#jellyfinbetter">
+                <a class="btn text-white site" href="/details#jellyfinbetter">
                     <img src="/assets/img/logos/jellyfinbetter.png" href="#" class="presentation-icon" alt="Jellyfin Better logo"/>
                     <h2>Jellyfin Better</h2>
                 </a>
-                <a class="btn text-white site" href="/details.php#betterplace">
+                <a class="btn text-white site" href="/details#betterplace">
                     <img src="/assets/img/logos/betterplace.png" href="#" class="presentation-icon" alt="Better Place logo"/>
                     <h2>Better Place</h2>
                 </a>
-                <a class="btn text-white site" href="/details.php#minecraftbetter">
+                <a class="btn text-white site" href="/details#minecraftbetter">
                     <img src="/assets/img/logos/minecraftbetter.png" href="#" class="presentation-icon" alt="Minecraft Better logo"/>
                     <h2>Minecraft Better</h2>
                 </a>
-                <a class="btn text-white site" href="/details.php#gameyfin">
+                <a class="btn text-white site" href="/details#gameyfin">
                     <img src="/assets/img/logos/gameyfin.png" href="#" class="presentation-icon" alt="Gameyfin logo"/>
                     <h2>Gameyfin</h2>
                 </a>
