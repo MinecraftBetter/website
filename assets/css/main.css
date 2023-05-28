@@ -16,6 +16,14 @@ a {
     color: var(--secondary);
     text-decoration: none; }
 
+.alert.alert-primary {
+  background-color: var(--primary); }
+.alert.alert-secondary {
+  background-color: var(--secondary); }
+.alert.alert-dark {
+  background-color: #404040;
+  border: none; }
+
 hr {
   border-color: #666; }
 

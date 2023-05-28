@@ -22,6 +22,21 @@ a {
     }
 }
 
+.alert {
+    &.alert-primary {
+        background-color: var(--primary);
+    }
+
+    &.alert-secondary {
+        background-color: var(--secondary);
+    }
+
+    &.alert-dark {
+        background-color: #404040;
+        border: none;
+    }
+}
+
 hr {
     border-color: #666;
 }

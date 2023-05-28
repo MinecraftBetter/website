@@ -62,8 +62,9 @@
                     Le catalogue est constamment enrichi grâce à vos requêtes faites sur <a href="https://request.justbetter.fr">la plateforme dédiée</a>.<br/>
                     S'il a un problème avec un des films/séries/animés, merci de le signaler sur cette <a href="https://request.justbetter.fr">même plateforme</a>.
                 </p>
+                <div role="alert" class="alert alert-dark">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i> Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.</div>
                 <p>
-                    Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.<br/>
                     Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/7g7AURRjmX">notre Discord</a> et d'y rester sous peine d'un
                     bannissement.<br/>
                     <small>(merci de contacter <strong><em>Tiago#9070</em></strong> pour toute contestation)</small><br/>
