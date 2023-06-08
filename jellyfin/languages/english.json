@@ -1,0 +1,26 @@
+{
+  "txt-home": "Home",
+  "txt-status": "Status",
+  "txt-credit-website": "This website was made with ❤ by",
+  "txt-credit-server": "This server is generously hosted by",
+
+  "txt-github": "Github",
+  "txt-discord": "Discord",
+  "txt-jellyfin": "Jellyfin",
+  "txt-jellyseerr": "Requests / Issues",
+  "txt-jfago": "Create account",
+  
+  "txt-title": "Jellyfin Better",
+  "txt-subtitle": "Jellyfin but... better ¯\\_(ツ)_/¯",
+
+  "txt-use-clients": "Please use clients and not the browser to stream from Jellyfin, this increases our hosting capacity considerably",
+
+  "txt-install": "Installation",
+  "txt-client-desktop": "Install one of theses clients",
+  "txt-client-mobile": "or if you are on mobile",
+  "txt-address-1": "Then in the client, enter",
+  "txt-address-2": "as the server address",
+  "txt-login": "Login with your credentials",
+  "txt-no-account": "if you don't have an account, you can create one using",
+  "txt-enjoy": "Enjoy !"
+}
