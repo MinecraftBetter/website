@@ -3,7 +3,7 @@
  * Made by Evan Galli *
  **********************/
 
-$jellyfin_url = "https://jellyfin.jellyfinbetter.fr/";
+$jellyfin_url = "https://jellyfin.justbetter.fr/";
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ $jellyfin_url = "https://jellyfin.jellyfinbetter.fr/";
     <link rel="icon" type="image/png" href="assets/img/favicon.png"/>
 
     <title>Jellyfin Better</title>
-    <link rel="canonical" href="https://jellyfinbetter.fr"/>
+    <link rel="canonical" href="https://justbetter.fr/jellyfin"/>
     <meta name="description" content="Jellyfin Better: Jellyfin but... better ¯\_(ツ)_/¯">
 
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>

@@ -86,10 +86,10 @@
                         <li><strong>Android:</strong> <a href="https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin">Findroid</a></li>
                         <li><strong>iOS:</strong> <a href="https://apps.apple.com/ca/app/swiftfin/id1604098728">Swiftfin</a></li>
                     </ul>
-                    Sur le client, veuillez entrer <code>https://jellyfin.jellyfinbetter.fr/</code> en tant qu'adresse du serveur.
+                    Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr/</code> en tant qu'adresse du serveur.
                 </p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://jellyfin.jellyfinbetter.fr/" class="btn btn-lg">
+                    <a href="/jellyfin" class="btn btn-lg">
                         <i class="fas fa-photo-video" aria-hidden="true"></i>Jellyfin
                     </a>
                     <a href="https://request.justbetter.fr/" class="btn btn-lg">
