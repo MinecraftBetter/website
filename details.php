@@ -67,7 +67,7 @@
                 <p>
                     Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/7g7AURRjmX">notre Discord</a> et d'y rester sous peine d'un
                     bannissement.<br/>
-                    <small>(merci de contacter <strong><em>Tiago#9070</em></strong> pour toute contestation)</small><br/>
+                    <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
                     Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
                 </p>
                 <p>
@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <p><strong>Gameyfin</strong> est une plateforme ne contenant que des jeux <strong>sans DRM</strong> obtenus de manière <strong>légale</strong>.</p>
-                <p>Si vous souhaitez participer à l'étoffement du catalogue, merci de contacter <strong><em>Mika#7625</em></strong>.</p>
+                <p>Si vous souhaitez participer à l'étoffement du catalogue, merci de contacter <strong><em>mikaleplubo</em></strong>.</p>
                 <p>Dû à la quantité de jeux mis à votre disposition, tous n'ont pu être testé, si un jeu ne se lance pas, merci de nous en informer.</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
