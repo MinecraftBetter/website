@@ -43,7 +43,7 @@
     let attempt = 0;
 
     console.log("Clicks needed: " + attempts);
-    aTag.addEventListener("click",  (e) => {
+    aTag.addEventListener("click", (e) => {
         if (attempt >= attempts) {
             aTag.href = aTag.dataset.link;
             return;
@@ -52,8 +52,8 @@
         attempt++;
         aTag.innerText = msg[Math.floor(Math.random() * msg.length)];
         aTag.style.position = "absolute";
-        aTag.style.top = (80*Math.random()) + "%";
-        aTag.style.left = (80*Math.random()) + "%";
+        aTag.style.top = (80 * Math.random()) + "%";
+        aTag.style.left = (80 * Math.random()) + "%";
         console.log(attempt + " / " + attempts);
     });
 </script>
