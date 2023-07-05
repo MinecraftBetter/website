@@ -37,7 +37,7 @@ $jellyfin_url = "https://jellyfin.justbetter.fr/";
             <a href="/"><img class="masthead-brand" src="assets/img/banner.png" style="height: 4.5em;"/></a>
             <nav class="p-3 nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="/"><i class="fas fa-home"></i> <span id="txt-home">Home</a>
-                <a class="nav-link" href="http://status.jellyfinbetter.fr/"><i class="fas fa-server"></i> <span id="txt-status">Status</span></a>
+                <a class="nav-link" href="https://status.justbetter.fr/"><i class="fas fa-server"></i> <span id="txt-status">Status</span></a>
                 <a class="nav-link" href="https://discord.gg/7g7AURRjmX"><i class="fab fa-discord"></i> <span id="txt-discord">Discord</span></a>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="language" data-toggle="dropdown"><i class="fas fa-language"></i></a>
