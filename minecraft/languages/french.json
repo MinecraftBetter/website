@@ -1,0 +1,24 @@
+{
+  "txt-home": "Accueil",
+  "txt-status": "Status",
+  "txt-credit": "Ce site a été fait avec ❤ par",
+
+  "txt-github": "Github",
+  "txt-discord": "Discord",
+  "txt-youtube": "YouTube",
+
+  "txt-download-windows": "Windows",
+  "txt-download-macos": "MacOS",
+  "txt-download-linux": "Linux",
+  "txt-download": "Installation",
+  "txt-download-first": "Tout d'abord, installez",
+  "txt-download-java": "Java 18",
+  "txt-download-then": "puis, téléchargez",
+  "txt-download-installer": "l'installeur",
+  "txt-download-or": "ou",
+  "txt-download-standalone": "la version portable",
+
+  "txt-mcbetter": "Minecraft Better",
+  "txt-mcbetter-subtitle": "Un serveur Minecraft",
+  "txt-mcbetter-desc": "Minecraft Better, c'est une survie SMP moddée avec un peu de RP, un chat vocal de proximité et bien plus !"
+}
