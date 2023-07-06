@@ -44,8 +44,7 @@
             <a href="/"><img class="masthead-brand" src="img/banner.png" style="height: 4.5em;" alt="Banner" /></a>
             <nav class="p-3 nav nav-masthead justify-content-center">
                 <a class="nav-link active" href="/"><i class="fas fa-home" aria-hidden="true"></i> <span id="txt-home">Home</a>
-                <a class="nav-link" href="https://place.justbetter.fr/"><i class="fas fa-pen" aria-hidden="true"></i> <span id="txt-place">rPlace</span></a>
-                <a class="nav-link" href="https://status.justbetter.fr/"><i class="fas fa-server" aria-hidden="true"></i> <span id="txt-status">Status</span></a>
+                <a class="nav-link" href="https://status.justbetter.fr/status/minecraftbetter"><i class="fas fa-server" aria-hidden="true"></i> <span id="txt-status">Status</span></a>
                 <a class="nav-link" href="https://discord.gg/4TC5eNEkE5"><i class="fab fa-discord" aria-hidden="true"></i> <span id="txt-discord">Discord</span></a>
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" id="language" data-toggle="dropdown"><i class="fas fa-language" aria-hidden="true"></i></a>
