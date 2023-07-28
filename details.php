@@ -85,6 +85,9 @@
                         <li><strong>Linux:</strong> <a href="https://github.com/jellyfin/jellyfin-media-player/releases/">Jellyfin Media Player</a></li>
                         <li><strong>Android:</strong> <a href="https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin">Findroid</a></li>
                         <li><strong>iOS:</strong> <a href="https://apps.apple.com/ca/app/swiftfin/id1604098728">Swiftfin</a></li>
+                        <li><strong>Android TV:</strong> <a href="https://play.google.com/store/apps/details?id=org.jellyfin.androidtv">Jellyfin for Android TV</a></li>
+                        <li><strong>WebOS (LG):</strong> <a href="https://us.lgappstv.com/main/tvapp/detail?appId=1030579">Jellyfin for WebOS</a></li>
+                        <li><strong>Tizen (Samsung):</strong> <a href="https://github.com/jeppevinkel/jellyfin-tizen-builds">Jellyfin for Tizen</a> <small>(Programme en alpha à installer manuellement, s'adresser à <strong><em>evang_</em></strong> pour toute demande d'aide)</small></li>
                     </ul>
                     Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr/</code> en tant qu'adresse du serveur.
                 </p>
