@@ -75,65 +75,7 @@ $jellyfin_url = "https://jellyfin.justbetter.fr/";
                 </p>
             </div>
         </div>
-
-
-        <content class="panel d-block mb-5">
-            <div class="alert alert-warning d-flex align-items-center mb-5" role="alert">
-                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-                <div id="txt-use-clients">
-                    Please use clients and not the browser to stream from Jellyfin, this increases our hosting capacity considerably
-                </div>
-            </div>
-
-            <section id="installation">
-                <h3 id="txt-install">Installation</h3>
-                <article>
-                    <ol>
-                        <li class="mt-2 mb-2">
-                            <span id="txt-client-desktop">Install one of theses clients</span>
-                            <a href="https://github.com/jellyfin/jellyfin-media-player/releases/download/v1.9.1/JellyfinMediaPlayer-1.9.1-windows-x64.exe" class="btn btn-sm btn-success">
-                                <i class="fab fa-windows" aria-hidden="true"></i> <span id="windows">Windows</span>
-                            </a>
-                            <a href="https://github.com/jellyfin/jellyfin-media-player/releases/download/v1.9.1/JellyfinMediaPlayer-1.9.1-macos-notarized.dmg" class="btn btn-sm btn-success">
-                                <i class="fab fa-apple" aria-hidden="true"></i> <span id="macos">MacOS</span>
-                            </a>
-                            <a href="https://github.com/jellyfin/jellyfin-media-player/releases/" class="btn btn-sm btn-success">
-                                <i class="fab fa-linux" aria-hidden="true"></i> <span id="linux">Linux</span>
-                            </a>
-                            <span id="txt-client-mobile">or if you are on mobile</span>
-                            <a href="https://apps.apple.com/ca/app/swiftfin/id1604098728" class="btn btn-sm btn-success">
-                                <i class="fab fa-app-store-ios" aria-hidden="true"></i> <span id="ios">iOS</span>
-                            </a>
-                            <a href="https://play.google.com/store/apps/details?id=dev.jdtech.jellyfin" class="btn btn-sm btn-success">
-                                <i class="fab fa-android" aria-hidden="true"></i> <span id="android">Android</span>
-                            </a>
-                        </li>
-                        <li class="mb-2"><span id="txt-address-1">Then in the client, enter</span> <code><?= $jellyfin_url ?></code> <span id="txt-address-2">as the server address</span></li>
-                        <li class="mb-2">
-                            <span id="txt-login">Login with your credentials</span>
-                            <br/>
-                            <small>
-                                <em>
-                                    <span id="txt-no-account">if you don't have an account, you can create one using</span>
-                                    <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT" class="btn btn-sm btn-info">
-                                        <i class="fas fa-user" aria-hidden="true"></i><span id="txt-jfago">Create account</span>
-                                    </a>
-                                </em>
-                            </small>
-                        </li>
-                        <li class="mb-2" id="txt-enjoy">Enjoy !</li>
-                    </ol>
-                </article>
-            </section>
-        </content>
     </main>
-
-    <footer class="mt-auto text-center">
-        <div class="inner">
-            <p><span id="txt-credit-website">This website was made with ❤ by</span> <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
-            <p><span id="txt-credit-server">This server is generously hosted by</span> <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
-        </div>
-    </footer>
 </div>
 </body>
 </html>

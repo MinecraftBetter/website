@@ -93,10 +93,7 @@
                 </p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://jellyfin.justbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-photo-video" aria-hidden="true"></i>Jellyfin
-                    </a>
-                    <a href="https://request.justbetter.fr/" class="btn btn-lg">
-                        <i class="fas fa-bullhorn" aria-hidden="true"></i>Requêtes / Problèmes
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
             </article>
