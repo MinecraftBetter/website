@@ -4,7 +4,10 @@ for (let site of document.getElementsByClassName("site")) {
     site.addEventListener("click", function () {
         changeSite(this, true);
     });
-    if (site.dataset.article === selectedSite) changeSite(site, true);
+    if (site.dataset.article === selectedSite) {
+        changeSite(site, true);
+        changeColor(document.querySelector("header.masthead"), site);
+    }
 }
 window.addEventListener("scroll", function () {
     let center = document.documentElement.scrollTop + document.documentElement.offsetHeight / 2;
@@ -20,7 +23,7 @@ function changeColor(elem, btn) {
 }
 
 function changeSite(btn, scroll) {
-    changeColor(document.querySelector("header.masthead"), btn);
+    if (!scroll) changeColor(document.querySelector("header.masthead"), btn);
 
     for (let s of document.getElementsByClassName("site")) {
         if (s === btn) btn.classList.add("clicked");
