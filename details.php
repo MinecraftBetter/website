@@ -89,7 +89,7 @@
                         <li><strong>WebOS (LG):</strong> <a href="https://us.lgappstv.com/main/tvapp/detail?appId=1030579">Jellyfin for WebOS</a></li>
                         <li><strong>Tizen (Samsung):</strong> <a href="https://github.com/jeppevinkel/jellyfin-tizen-builds">Jellyfin for Tizen</a> <small>(Programme en alpha à installer manuellement, s'adresser à <strong><em>evang_</em></strong> pour toute demande d'aide)</small></li>
                     </ul>
-                    Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr/</code> en tant qu'adresse du serveur.
+                    Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr</code> en tant qu'adresse du serveur.
                 </p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://jellyfin.justbetter.fr/" class="btn btn-lg">
