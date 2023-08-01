@@ -230,8 +230,20 @@ header.scrolled {
   white-space: nowrap;
   overflow-y: hidden; }
 
-.introduction .sites .site > h2 {
-  transition: font-size 1s; }
+.introduction .sites {
+  display: flex;
+  justify-content: center;
+  gap: .25rem; }
+  @media (max-width: 1200px) {
+    .introduction .sites .site .presentation-icon {
+      width: 125px; }
+    .introduction .sites .site h2 {
+      font-size: 1.75em; } }
+  @media (max-width: 800px) {
+    .introduction .sites {
+      flex-direction: column; } }
+  .introduction .sites .site > h2 {
+    transition: font-size 1s; }
 
 .introduction.small .sites .site > h2 {
   font-size: 1rem; }
@@ -246,6 +258,9 @@ header.scrolled {
       transform: translate(0, -10%); }
   .site img {
     transition: transform 0.5s; }
+  @media (max-width: 800px) {
+    .site span {
+      display: none; } }
 
 body.details {
   background-image: linear-gradient(to top, #1e1e1ef7, #1e1e1ef7), url("/assets/img/background.jpg");
@@ -267,6 +282,9 @@ body.details {
       body.details .masthead .sites .site {
         padding: .375rem .85rem .375rem .75rem;
         background: var(--secondary); }
+        @media (max-width: 800px) {
+          body.details .masthead .sites .site {
+            padding: .375rem .5rem; } }
         body.details .masthead .sites .site:not(:last-child) {
           margin-right: .5rem; }
         body.details .masthead .sites .site.clicked {

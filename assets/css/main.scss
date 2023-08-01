@@ -16,7 +16,7 @@ a {
     color: var(--primary);
     text-decoration: none;
 
-    &:focus, &:hover{
+    &:focus, &:hover {
         color: var(--secondary);
         text-decoration: none;
     }
@@ -294,8 +294,29 @@ header.scrolled {
     overflow-y: hidden;
 }
 
-.introduction .sites .site > h2 {
-    transition: font-size 1s;
+.introduction .sites {
+    display: flex;
+    justify-content: center;
+    gap: .25rem;
+
+    @media (max-width: 1200px) {
+
+        .site{
+            .presentation-icon{
+                width: 125px;
+            }
+            h2{
+                font-size: 1.75em;
+            }
+        }
+    }
+    @media (max-width: 800px) {
+        flex-direction: column;
+    }
+
+    .site > h2 {
+        transition: font-size 1s;
+    }
 }
 
 .introduction.small .sites .site > h2 {
@@ -320,6 +341,12 @@ header.scrolled {
 
     img {
         transition: transform 0.5s;
+    }
+
+    @media (max-width: 800px) {
+        span {
+            display: none;
+        }
     }
 }
 
@@ -350,9 +377,15 @@ body.details {
             .site {
                 padding: .375rem .85rem .375rem .75rem;
                 background: var(--secondary);
-                &:not(:last-child){
+
+                @media (max-width: 800px) {
+                    padding: .375rem .5rem;
+                }
+
+                &:not(:last-child) {
                     margin-right: .5rem;
                 }
+
                 &.clicked {
                     transform: none;
                     filter: brightness(85%);
@@ -383,8 +416,9 @@ body.details {
 
         .lead .btn {
             background-color: var(--primary);
-            color:white;
-            &:hover{
+            color: white;
+
+            &:hover {
                 background-color: var(--secondary);
             }
         }
