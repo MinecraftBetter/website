@@ -23,7 +23,7 @@
 
 <body>
 <div class="mx-auto">
-    <header class="masthead mb-auto p-4" style="color: var(--white); background-color: #1e1e1e;">
+    <header class="masthead mb-auto p-4">
         <div class="inner">
             <a href="/"><img class="masthead-brand" src="/assets/img/banner.png" style="height: 3.5rem;" alt="Just Better"/></a>
         </div>
