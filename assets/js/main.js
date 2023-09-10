@@ -4,10 +4,10 @@ for (let site of document.getElementsByClassName("site")) {
     site.addEventListener("click", function () {
         changeSite(this, true);
     });
-    if (site.dataset.article === selectedSite) {
+    if (site.dataset.article === selectedSite) window.onload = () => {
         changeSite(site, true);
         changeColor(document.querySelector("header.masthead"), site);
-    }
+    };
 }
 window.addEventListener("scroll", function () {
     let center = document.documentElement.scrollTop + document.documentElement.offsetHeight / 2;
@@ -33,7 +33,8 @@ function changeSite(btn, scroll) {
     if (scroll) {
         try {
             history.pushState({}, '', "#" + btn.dataset.article);
-        } catch (e) { }
+        } catch (e) {
+        }
 
         window.scrollTo({
             top: document.getElementById(btn.dataset.article).offsetTop - 5.5 * parseFloat(getComputedStyle(document.documentElement).fontSize),
