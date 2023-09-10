@@ -21,7 +21,7 @@
     <link href="assets/css/main.css" rel="stylesheet"/>
 </head>
 
-<body>
+<body style="overflow: hidden;">
 <div class="mx-auto">
     <header class="masthead mb-auto p-4">
         <div class="inner">
@@ -29,8 +29,8 @@
         </div>
     </header>
 
-    <main role="main" style="padding-top: 7rem; min-height: calc(100vh - 7rem);">
-        <div class="d-md-flex flex-column w-100 introduction" id="introduction">
+    <main role="main" style="margin-top: 7rem; height: calc(100vh - 7rem); overflow-y: auto;">
+        <div class="d-md-flex flex-column w-100 pt-3 introduction" id="introduction" style="overflow-x: hidden;">
             <div class="text-center sites mw-100">
                 <a class="btn text-white site" href="/details#jellyfinbetter">
                     <img src="/assets/img/logos/jellyfinbetter.png" href="#" class="presentation-icon" alt="Jellyfin Better logo"/>
@@ -50,14 +50,14 @@
                 </a>
             </div>
         </div>
-    </main>
 
-    <footer class="mt-auto text-center">
-        <div class="inner">
-            <p><span id="txt-credit">This website was made with ❤ by</span> <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
-            <p><span id="txt-credit-server">This server is generously hosted by</span> <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
-        </div>
-    </footer>
+        <footer class="mt-auto text-center">
+            <div class="inner">
+                <p><span id="txt-credit">This website was made with ❤ by</span> <a href="https://github.com/06Games" style="font-weight: 600;">Evan Galli</a></p>
+                <p><span id="txt-credit-server">This server is generously hosted by</span> <a href="https://github.com/Tiagoez" style="font-weight: 600;">Tiago Procopio</a></p>
+            </div>
+        </footer>
+    </main>
 </div>
 </body>
 </html>
