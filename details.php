@@ -73,10 +73,8 @@
                 <p>
                     <div role="alert" class="alert alert-danger">
                         <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-                        Toute personne étrangère à l'équipe d'administration peut faire l'objet d'un bannissement temporaire le temps d'établir contact avec elle afin de savoir qui
-                        l'a invitée sur le service.<br/>
-                    Pour simplifier la procédure et éviter tout désagrément, il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en
-                        mentionnant qui vous a communiqué le lien du serveur.
+                        Il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en mentionnant qui vous a communiqué le lien du serveur.
+                        À défaut de l'avoir fait, vous pourriez faire l'objet d'un bannissement temporaire.
                     </div>
                 </p>
                 <p>
