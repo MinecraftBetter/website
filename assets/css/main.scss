@@ -55,8 +55,9 @@ i[class*="twa-"] {
 code {
     color: var(--primary);
     font-style: oblique;
-    background: #292929;
+    background-color: #292929;
     padding: .25em .5em;
+    border-radius: .2em;
 }
 
 .btn-darkblue {
