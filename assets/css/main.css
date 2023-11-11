@@ -23,6 +23,10 @@ a {
 .alert.alert-dark {
   background-color: #404040;
   border: none; }
+.alert.alert-danger {
+  color: #fde2e5;
+  background-color: #5c141b;
+  border: none; }
 
 hr {
   border-color: #666; }
@@ -32,7 +36,10 @@ i[class*="twa-"] {
   margin-right: 6px; }
 
 code {
-  color: #cc4482; }
+  color: var(--primary);
+  font-style: oblique;
+  background: #292929;
+  padding: .25em .5em; }
 
 .btn-darkblue {
   background-color: #004793;

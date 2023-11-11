@@ -35,6 +35,12 @@ a {
         background-color: #404040;
         border: none;
     }
+
+    &.alert-danger {
+        color: #fde2e5;
+        background-color: #5c141b;
+        border: none;
+    }
 }
 
 hr {
@@ -47,7 +53,10 @@ i[class*="twa-"] {
 }
 
 code {
-    color: #cc4482;
+    color: var(--primary);
+    font-style: oblique;
+    background: #292929;
+    padding: .25em .5em;
 }
 
 .btn-darkblue {
