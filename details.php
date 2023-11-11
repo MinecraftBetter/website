@@ -65,19 +65,22 @@
                 <div role="alert" class="alert alert-dark">
                     <i class="fas fa-info-circle" aria-hidden="true"></i> Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.</div>
                 <p>
-                    Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et d'y rester sous peine d'un
+                    Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et <strong>d'y rester</strong> sous peine d'un
                     bannissement.<br/>
                     <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
                     Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
                 </p>
                 <p>
-                    Toute personne étrangère à l'équipe d'administration peut faire l'objet d'un bannissement temporaire, le temps d'établir un contact avec elle afin de savoir qui
-                    l'a invitée sur le service.<br/>
-                    Pour simplifier la procédure et éviter tout désagrément, vous pouvez simplement envoyer un message dans le salon <code>Général</code> du serveur Discord en
-                    mentionnant qui vous a communiqué le lien du serveur.
+                    <div role="alert" class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        Toute personne étrangère à l'équipe d'administration peut faire l'objet d'un bannissement temporaire le temps d'établir contact avec elle afin de savoir qui
+                        l'a invitée sur le service.<br/>
+                    Pour simplifier la procédure et éviter tout désagrément, il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en
+                        mentionnant qui vous a communiqué le lien du serveur.
+                    </div>
                 </p>
                 <p>
-                    Pour utiliser ce service, nous vous demandons d'utiliser un client Jellyfin, cela permet de grandement réduire la charge du serveur et ainsi pouvoir accueillir plus de monde.<br/>
+                    Pour utiliser ce service, il vous est <strong>requis d'installer un client Jellyfin</strong>, cela permet de grandement réduire la charge du serveur et ainsi pouvoir accueillir plus de monde.<br/>
                     Voici une liste non exhaustive des clients disponibles:
                     <ul>
                         <li><strong>Windows:</strong> <a href="https://github.com/jellyfin/jellyfin-media-player/releases/download/v1.9.1/JellyfinMediaPlayer-1.9.1-windows-x64.exe">Jellyfin Media Player</a></li>
