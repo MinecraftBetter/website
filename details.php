@@ -65,7 +65,7 @@
                 <div role="alert" class="alert alert-dark">
                     <i class="fas fa-info-circle" aria-hidden="true"></i> Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un, utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.</div>
                 <p>
-                    Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/7g7AURRjmX">notre Discord</a> et d'y rester sous peine d'un
+                    Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et d'y rester sous peine d'un
                     bannissement.<br/>
                     <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
                     Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
