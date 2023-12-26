@@ -24,7 +24,13 @@
 		  <script>
 				window.onload = () => {
 					let searchParams = new URLSearchParams(window.location.search);
-					let url = new URL(searchParams.get("url"));
+                    if(searchParams.has("bypass")){
+                        document.cookie = "bypass=" + searchParams.get("bypass") + ";domain=.justbetter.fr;path=/;secure=true;sameSite=none";
+                        window.location =searchParams.get("url");
+                        return;
+                    }
+
+					let url = new URL(window.location);
 					url.searchParams.set("bypass", "true");
 					colorTrace("If you know what you're doing you can bypass this check", "lightblue", 20);
 					colorTrace(url.href, "lightblue", 15);
