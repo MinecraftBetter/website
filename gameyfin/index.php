@@ -30,7 +30,7 @@
                 <p class="lead">Si vous souhaitez participer à l'étoffement du catalogue, merci de contacter <strong><em>mikaleplubo</em></strong>.</p>
                 <p class="lead">Dû à la quantité de jeux mis à votre disposition, tous n'ont pu être testé,<br/>si un jeu ne se lance pas, merci de nous en informer.</p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; margin-top: 2.5rem; justify-content: center;">
-                    <a href="#" data-link="https://gameyfin.justbetter.fr/library" class="btn btn-lg btn-dark" style="max-width: 500px;" id="goToService">Accéder au catalogue</a>
+                    <a href="#" data-link="library" class="btn btn-lg btn-dark" style="max-width: 500px;" id="goToService">Accéder au catalogue</a>
                 </p>
             </div>
         </div>

@@ -34,7 +34,7 @@
 					url.searchParams.set("bypass", "true");
 					colorTrace("If you know what you're doing you can bypass this check", "lightblue", 20);
 					colorTrace(url.href, "lightblue", 15);
-					colorTrace("Please note that it will only bypass for this specific request and that the plateform still won't be usable.", "red", 15);
+					colorTrace("Please note that this is for debugging purposes only. Please use a client for any other use.", "red", 15);
 				};
 				function colorTrace(msg, color, size) {
 					console.log("%c" + msg, "color:" + color + ";font-weight:bold;font-size:" + size + "pt");

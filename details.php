@@ -93,7 +93,7 @@
                     Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr</code> en tant qu'adresse du serveur.
                 </p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://jellyfin.justbetter.fr/" class="btn btn-lg">
+                    <a href="https://jellyfin.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
@@ -110,7 +110,7 @@
                 <p class="mt-3 mb-3 text-warning">Le serveur est actuellement fermé</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://minecraft.justbetter.fr/" class="btn btn-lg">
+                    <a href="https://minecraft.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
@@ -128,7 +128,7 @@
                 <p>Dû à la quantité de jeux mis à votre disposition, tous n'ont pu être testé, si un jeu ne se lance pas, merci de nous en informer.</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://gameyfin.justbetter.fr/" class="btn btn-lg">
+                    <a href="https://gameyfin.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
@@ -146,7 +146,7 @@
                 <p class="mt-3 text-warning">Toute tentative de vandalisme est strictement interdite et conduira inéluctablement au bannissement du mis en cause.</p>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
-                    <a href="https://place.justbetter.fr/" class="btn btn-lg">
+                    <a href="https://place.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
