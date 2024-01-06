@@ -11,7 +11,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png"/>
-    <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+    <link rel="icon" type="image/png" href="/assets/img/logos/gameyfin.png"/>
 
     <title>Just Better - Gameyfin</title>
 
@@ -32,10 +32,10 @@
 
         #game-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, 200px);
-            grid-auto-rows: 250px;
+            grid-template-columns: repeat(auto-fit, 225px);
+            grid-auto-rows: 300px;
             justify-content: center;
-            grid-gap: 10px;
+            grid-gap: 18.75px;
         }
 
         .game {
@@ -51,9 +51,18 @@
     </style>
 </head>
 
-<body class="d-flex">
+<body class="d-flex details">
 <div class="mx-auto">
-    <main role="main">
+    <header class="masthead mb-auto" style="color: var(--white); grid-template: 3rem/200px 1fr;">
+        <div class="inner">
+            <a href="/"><img class="masthead-brand" src="/assets/img/banners/gameyfin.png" alt="GameVault"/></a>
+        </div>
+        <div class="d-flex justify-content-end align-items-center">
+            <input id="search" class="form-control" style="max-width: 15em;" type="search" placeholder="Search" aria-label="Search">
+        </div>
+    </header>
+
+    <main role="main" style="padding-top: 4rem;">
         <div id="game-list" class="my-4">
             <template id="game-item">
                 <button class="game btn btn-lg btn-dark">
@@ -71,6 +80,7 @@
             <div class="modal-header flex-column">
                 <h5 class="modal-title" id="game-title">Game title</h5>
                 <small><i class="fas fa-calendar-plus" aria-hidden="true"></i><span id="game-added"></span></small>
+                <small><i class="fas fa-calendar" aria-hidden="true"></i><span id="game-release"></span></small>
                 <small><i class="fas fa-code-branch" aria-hidden="true"></i><span id="game-version"></span></small>
                 <small><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
                 <small><i class="fas fa-comments" aria-hidden="true"></i><span id="game-metacritic"></span></small>
@@ -114,6 +124,7 @@
     const gameList = document.getElementById("game-list");
     const itemTemplate = document.getElementById("game-item");
     let query = {};
+    let totalPages = 1;
 
     window.onscroll = function () {
         const scrollHeight = document.body.scrollHeight;
@@ -124,11 +135,23 @@
         }
     }
 
-    async function getGames(page = 1) {
-        if (page) query["page"] = page;
+    const searchField = document.getElementById("search");
+    searchField.onchange = function () {
+        while (gameList.lastElementChild) gameList.removeChild(gameList.lastElementChild);
+        getGames();
+    };
 
-        const response = await fetch(getUrl("/games?" + new URLSearchParams(query).toString()));
-        const games = (await response.json()).data;
+    async function getGames(page) {
+        if(!page) page = 1;
+        if(page > totalPages) return;
+        query["page"] = page;
+        query["sortBy"] = "title:ASC";
+        query["search"] = searchField.value;
+
+        const response = await (await fetch(getUrl("/games?" + new URLSearchParams(query).toString()))).json();
+        const games = response.data;
+        totalPages = response.meta.totalPages;
+        if(totalPages < 1) totalPages = 1;
 
         for (const game of games) {
             const item = document.importNode(itemTemplate.content, true).firstElementChild;
@@ -146,6 +169,7 @@
 
         modalNode.querySelector("#game-title").innerHTML = game.rawg_title + (game.title !== game.rawg_title ? " <small>[" + game.title + "]</small>" : "");
         modalNode.querySelector("#game-added").innerText = new Date(openedGame.created_at).toDateString();
+        modalNode.querySelector("#game-release").innerText = new Date(openedGame.release_date).toDateString();
         modalNode.querySelector("#game-version").innerText = openedGame.version ?? "Unknown";
         modalNode.querySelector("#game-website").href = openedGame.website_url ?? "#";
         modalNode.querySelector("#game-metacritic").innerText = openedGame.metacritic_rating ? (openedGame.metacritic_rating + " / 100") : "Unknown";
