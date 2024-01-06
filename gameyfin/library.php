@@ -48,6 +48,17 @@
             height: 100%;
             max-width: 100%;
         }
+
+        #game-info .modal-content {
+            background-size: cover;
+            background-position: center;
+        }
+
+        #game-info .modal-content > div {
+            backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
+            -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
+            background-color: rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -77,25 +88,26 @@
 <div class="modal fade" id="game-info" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header flex-column">
-                <h5 class="modal-title" id="game-title">Game title</h5>
-                <small><i class="fas fa-calendar-plus" aria-hidden="true"></i><span id="game-added"></span></small>
-                <small><i class="fas fa-calendar" aria-hidden="true"></i><span id="game-release"></span></small>
-                <small><i class="fas fa-code-branch" aria-hidden="true"></i><span id="game-version"></span></small>
-                <small><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
-                <small><i class="fas fa-comments" aria-hidden="true"></i><span id="game-metacritic"></span></small>
-                <small><i class="fas fa-paper-plane" aria-hidden="true"></i><span id="game-publishers"></span></small>
-                <small><i class="fas fa-code" aria-hidden="true"></i><span id="game-developers"></span></small>
-                <small><i class="fas fa-store-alt" aria-hidden="true"></i><span id="game-stores"></span></small>
-                <small><i class="fas fa-tags" aria-hidden="true"></i><span id="game-tags"></span></small>
-                <small><i class="fas fa-swatchbook" aria-hidden="true"></i><span id="game-genres"></span></small>
+            <div class="modal-header">
+                <div style="height: 15em;" class="mr-4">
+                    <img id="game-cover" class="h-100" alt="cover" />
+                </div>
+                <div class="d-flex flex-column">
+                    <h5 class="modal-title" id="game-title">Game title</h5>
+                    <small><i class="fas fa-calendar-plus" aria-hidden="true"></i><span id="game-added"></span></small>
+                    <small><i class="fas fa-calendar" aria-hidden="true"></i><span id="game-release"></span></small>
+                    <small><i class="fas fa-code-branch" aria-hidden="true"></i><span id="game-version"></span></small>
+                    <small><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
+                    <small><i class="fas fa-comments" aria-hidden="true"></i><span id="game-metacritic"></span></small>
+                    <small><i class="fas fa-paper-plane" aria-hidden="true"></i><span id="game-publishers"></span></small>
+                    <small><i class="fas fa-code" aria-hidden="true"></i><span id="game-developers"></span></small>
+                    <small><i class="fas fa-store-alt" aria-hidden="true"></i><span id="game-stores"></span></small>
+                    <small><i class="fas fa-tags" aria-hidden="true"></i><span id="game-tags"></span></small>
+                    <small><i class="fas fa-swatchbook" aria-hidden="true"></i><span id="game-genres"></span></small>
+                </div>
             </div>
             <div class="modal-body">
                 <p id="game-desc"></p>
-                <p class="text-center"><img id="game-screenshot" class="mw-100" style="max-height: 300px;" alt="background" src=""/></p>
-                <div class="progress" style="display: none;">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -142,8 +154,8 @@
     };
 
     async function getGames(page) {
-        if(!page) page = 1;
-        if(page > totalPages) return;
+        if (!page) page = 1;
+        if (page > totalPages) return;
         query["page"] = page;
         query["sortBy"] = "title:ASC";
         query["search"] = searchField.value;
@@ -151,7 +163,7 @@
         const response = await (await fetch(getUrl("/games?" + new URLSearchParams(query).toString()))).json();
         const games = response.data;
         totalPages = response.meta.totalPages;
-        if(totalPages < 1) totalPages = 1;
+        if (totalPages < 1) totalPages = 1;
 
         for (const game of games) {
             const item = document.importNode(itemTemplate.content, true).firstElementChild;
@@ -180,7 +192,8 @@
         modalNode.querySelector("#game-genres").innerText = openedGame.genres.map(p => p.name).join(", ");
         modalNode.querySelector("#game-desc").innerHTML = markdownConverter.makeHtml(openedGame.description);
         modalNode.querySelector("#game-size").innerText = (openedGame.size / 1000000000).toFixed(2) + " Go";
-        modalNode.querySelector("#game-screenshot").src = getUrl("/images/" + openedGame.background_image.id);
+        modalNode.querySelector("#game-cover").src = getUrl("/images/" + openedGame.box_image.id);
+        modalNode.querySelector(".modal-content").style.backgroundImage = "url(" + getUrl("/images/" + openedGame.background_image.id) + ")";
     }
 
     getGames();
