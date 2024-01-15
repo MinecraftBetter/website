@@ -92,7 +92,7 @@
                 <div style="height: 15em;" class="mr-4">
                     <img id="game-cover" class="h-100" alt="cover" />
                 </div>
-                <div class="d-flex flex-column">
+                <div class="flex-grow-1 d-flex flex-column">
                     <h5 class="modal-title" id="game-title">Game title</h5>
                     <small><i class="fas fa-calendar-plus" aria-hidden="true"></i><span id="game-added"></span></small>
                     <small><i class="fas fa-calendar" aria-hidden="true"></i><span id="game-release"></span></small>
