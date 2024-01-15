@@ -48,6 +48,10 @@
                     <img src="/assets/img/logos/gameyfin.png" href="#" class="presentation-icon" alt="Gameyfin logo"/>
                     <h2>Gameyfin</h2>
                 </a>
+                <a class="btn text-white site" href="/details#retrofin">
+                    <img src="/assets/img/logos/retrofin.png" href="#" class="presentation-icon" alt="Retrofin logo"/>
+                    <h2>Retrofin</h2>
+                </a>
             </div>
         </div>
 

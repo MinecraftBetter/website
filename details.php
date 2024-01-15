@@ -40,6 +40,10 @@
                 <img src="/assets/img/logos/gameyfin.png" class="presentation-icon" alt="Gameyfin logo"/>
                 <span>Gameyfin</span>
             </button>
+            <button class="btn text-white site" id="btn-retrofin" data-article="retrofin" data-maincolor="#a7c637" data-secondarycolor="#91ac33">
+                <img src="/assets/img/logos/retrofin.png" class="presentation-icon" alt="Retrofin logo"/>
+                <span>Retrofin</span>
+            </button>
             <button class="btn text-white site" id="btn-betterplace" data-article="betterplace" data-maincolor="#47cc5d" data-secondarycolor="#359945">
                 <img src="/assets/img/logos/betterplace.png" class="presentation-icon" alt="Better Place logo"/>
                 <span>Better Place</span>
@@ -129,6 +133,22 @@
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://gameyfin.justbetter.fr/" class="btn btn-custom-primary btn-lg">
+                        <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
+                    </a>
+                </p>
+            </article>
+            <article class="site-details" id="retrofin">
+                <div class="head d-flex mb-4">
+                    <img src="/assets/img/logos/retrofin.png" alt="Retrofin logo" style="height:75px;"/>
+                    <div class="ml-3 d-flex flex-column justify-content-center">
+                        <h2 class="mb-0">Retrofin</h2>
+                        <p class="mb-0">Du rétro... à gogo</p>
+                    </div>
+                </div>
+                <p>Sur <strong>Retrofin</strong>, vous pourrez trouver les ROMs d'un grand nombre de jeux rétro (ou console de manière plus générale).</p>
+
+                <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
+                    <a href="https://retrofin.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
                     </a>
                 </p>
