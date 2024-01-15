@@ -120,8 +120,20 @@
                         <p class="mb-0">Un serveur Minecraft ¯\_(ツ)_/¯</p>
                     </div>
                 </div>
+
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Le serveur est actuellement fermé
+                </div>
+
                 <p><strong>Minecraft Better</strong> est un serveur évènementiel proposant survie et mini-jeux.</p>
-                <p class="mt-3 mb-3 text-warning">Le serveur est actuellement fermé</p>
+
+                <div class="mb-5 text-center" style="margin: 0 auto; max-width: 600px; max-height: 300px;">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <div class="embed-responsive-item text-center text-light d-flex" style="margin: 0 auto; background: #2f2f2f">
+                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/EHF_U2uEKCo" title="MinecraftBetter Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+                </div>
 
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://minecraft.justbetter.fr/" class="btn btn-custom-primary btn-lg">
@@ -153,7 +165,7 @@
                     <img src="/assets/img/logos/retrofin.png" alt="Retrofin logo" style="height:75px;"/>
                     <div class="ml-3 d-flex flex-column justify-content-center">
                         <h2 class="mb-0">Retrofin</h2>
-                        <p class="mb-0">Du rétro... à gogo</p>
+                        <p class="mb-0">Du rétro, à gogo</p>
                     </div>
                 </div>
                 <p>Sur <strong>Retrofin</strong>, vous pourrez trouver les ROMs d'un grand nombre de jeux rétro (ou console de manière plus générale).</p>
@@ -178,6 +190,11 @@
                         <p class="mb-0">Toile de dessin collaborative</p>
                     </div>
                 </div>
+
+                <div class="alert alert-danger" role="alert">
+                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Service temporairement fermé
+                </div>
+
                 <p>Sur <strong>Better Place</strong>, vous pourrez dessiner sur une grande toile collaborative à la manière de <a href="https://www.reddit.com/r/place">r/place</a>.
                 </p>
                 <p>Seul ou à plusieurs, contribuez à remplir la toile avec de nombreux dessins.</p>
