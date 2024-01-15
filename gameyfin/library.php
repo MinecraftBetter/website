@@ -157,6 +157,7 @@
         if (!page) page = 1;
         if (page > totalPages) return;
         query["page"] = page;
+        query["limit"] = 50;
         query["sortBy"] = "title:ASC";
         query["search"] = searchField.value;
 
