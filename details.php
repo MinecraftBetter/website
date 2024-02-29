@@ -191,10 +191,6 @@
                     </div>
                 </div>
 
-                <div class="alert alert-danger" role="alert">
-                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i> Service temporairement fermé
-                </div>
-
                 <p>Sur <strong>Better Place</strong>, vous pourrez dessiner sur une grande toile collaborative à la manière de <a href="https://www.reddit.com/r/place">r/place</a>.
                 </p>
                 <p>Seul ou à plusieurs, contribuez à remplir la toile avec de nombreux dessins.</p>
