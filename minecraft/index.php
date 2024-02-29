@@ -153,6 +153,19 @@
                 </article>
             </section>
 
+            <section>
+                <h3>Infos</h3>
+                <div id="news-container">
+                    <template id="news-article-template">
+                        <article class="news">
+                            <h4 class="news-title"></h4>
+                            <small class="news-date"></small>
+                            <p class="news-body"></p>
+                        </article>
+                    </template>
+                </div>
+            </section>
+
             <br />
 
             <div class="d-flex mt-5 flex-wrap" style="gap: 25px; margin: 0 auto; max-width: 900px">
@@ -172,5 +185,24 @@
         </div>
     </footer>
 </div>
+
+<script async defer>
+    async function loadNews() {
+        let newsRequest = await fetch("https://api.justbetter.fr/minecraftbetter/launcher/news");
+        let newsList = (await newsRequest.json()).results;
+        let newsTemplate = document.getElementById("news-article-template");
+        let newsContainer = document.getElementById("news-container");
+        console.log(newsList);
+        for (let newsArticle of newsList.reverse()) {
+            let div = document.importNode(newsTemplate.content, true);
+            div.querySelector(".news-title").innerText = newsArticle.title;
+            div.querySelector(".news-date").innerText = newsArticle.date;
+            div.querySelector(".news-body").innerText = newsArticle.description;
+            newsContainer.appendChild(div);
+        }
+    }
+
+    loadNews();
+</script>
 </body>
 </html>
