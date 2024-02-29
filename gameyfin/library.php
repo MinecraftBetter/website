@@ -59,6 +59,12 @@
             -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
             background-color: rgba(0, 0, 0, 0.2);
         }
+
+        select.custom-select, input.form-control, input.form-control:focus, input.form-control::placeholder {
+            background-color: var(--secondary);
+            border: none;
+            color: white;
+        }
     </style>
 </head>
 
@@ -69,6 +75,14 @@
             <a href="/"><img class="masthead-brand" src="/assets/img/banners/gameyfin.png" alt="GameVault"/></a>
         </div>
         <div class="d-flex justify-content-end align-items-center">
+            <select id="sort_by" class="custom-select mr-3" style="max-width: 10rem;">
+                <option value="title:ASC">Titre ↑</option>
+                <option value="title:DESC">Titre ↓</option>
+                <option value="created_at:ASC">Date d'ajout ↑</option>
+                <option value="created_at:DESC">Date d'ajout ↓</option>
+                <option value="release_date:ASC">Date de sortie ↑</option>
+                <option value="release_date:DESC">Date de sortie ↓</option>
+            </select>
             <input id="search" class="form-control" style="max-width: 15em;" type="search" placeholder="Search" aria-label="Search">
         </div>
     </header>
@@ -90,7 +104,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div style="height: 15em;" class="mr-4">
-                    <img id="game-cover" class="h-100" alt="cover" />
+                    <img id="game-cover" class="h-100" alt="cover"/>
                 </div>
                 <div class="flex-grow-1 d-flex flex-column">
                     <h5 class="modal-title" id="game-title">Game title</h5>
@@ -147,8 +161,9 @@
         }
     }
 
+    const sortField = document.getElementById("sort_by");
     const searchField = document.getElementById("search");
-    searchField.onchange = function () {
+    sortField.onchange = searchField.onchange = function () {
         while (gameList.lastElementChild) gameList.removeChild(gameList.lastElementChild);
         getGames();
     };
@@ -158,7 +173,7 @@
         if (page > totalPages) return;
         query["page"] = page;
         query["limit"] = 50;
-        query["sortBy"] = "title:ASC";
+        query["sortBy"] = sortField.value;
         query["search"] = searchField.value;
 
         const response = await (await fetch(getUrl("/games?" + new URLSearchParams(query).toString()))).json();
