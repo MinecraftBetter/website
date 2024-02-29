@@ -47,6 +47,8 @@
         .game img {
             height: 100%;
             max-width: 100%;
+            min-width: 0;
+            min-height: 0;
         }
 
         #game-info .modal-content {
