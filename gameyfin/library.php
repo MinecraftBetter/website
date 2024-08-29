@@ -61,12 +61,6 @@
             -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
             background-color: rgba(0, 0, 0, 0.2);
         }
-
-        select.custom-select, input.form-control, input.form-control:focus, input.form-control::placeholder {
-            background-color: var(--secondary);
-            border: none;
-            color: white;
-        }
     </style>
 </head>
 

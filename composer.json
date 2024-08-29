@@ -1,0 +1,9 @@
+{
+    "name": "justbetter/website",
+    "require": {
+        "softonic/graphql-client": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {"JustBetter\\Utils\\": "Utils/"}
+    }
+}

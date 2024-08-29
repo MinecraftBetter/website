@@ -179,6 +179,19 @@ header.scrolled {
     background: hsla(0, 0%, 20.8%, 0.85);
 }
 
+select.custom-select, .custom-file-label, input.form-control, input.form-control:focus, input.form-control::placeholder {
+    background-color: var(--secondary);
+    border: none;
+    color: white;
+}
+
+.custom-file-label::after{
+    background-color: var(--primary);
+    color: white;
+    height: 100%;
+    content: 'Parcourir';
+}
+
 /******
  Navbar
  ******/
