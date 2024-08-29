@@ -1,1 +1,5 @@
 /assets/css/.sass-cache/
+/.idea/
+/vendor/
+composer.lock
+composer.phar
