@@ -11,7 +11,10 @@ use JustBetter\Utils\Invite;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$ldap = new Invite($_GET["code"]);
+include '.secret.php';
+assert(isset($ldap_username, $ldap_password));
+
+$ldap = new Invite($_GET["code"], Invite::getToken($ldap_username, $ldap_password));
 $request = $ldap->getInviter();
 $invitedBy = $request->hasErrors() ? null : $request->getData()["user"];
 $isCodeValid = $invitedBy && $ldap->checkInvite($invitedBy);

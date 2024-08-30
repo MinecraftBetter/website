@@ -16,11 +16,23 @@ class Invite
     private string $inviterId;
     private string $inviterUuid;
 
-    public function __construct($code)
+    public function __construct($code, $token)
     {
         list($this->inviterId, $this->inviterUuid) = $this->parseCode($code);
-        $this->token = "";
+        $this->token = $token;
         $this->client = ClientBuilder::build(Invite::ENDPOINT . 'api/graphql', ['headers' => ['Authorization' => "Bearer $this->token"]]);
+    }
+
+    public static function getToken($username, $password)
+    {
+        $httpClient = new \GuzzleHttp\Client();
+        $response = $httpClient->request('POST', Invite::ENDPOINT .'auth/simple/login', [
+            'json' => [
+                'username' => $username,
+                'password' => $password
+            ]
+        ]);
+        return json_decode($response->getBody()->getContents())->token;
     }
 
     public function parseCode($code): array
