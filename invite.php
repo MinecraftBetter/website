@@ -12,9 +12,8 @@ use JustBetter\Utils\Invite;
 require __DIR__ . '/vendor/autoload.php';
 
 include '.secret.php';
-assert(isset($ldap_username, $ldap_password));
 
-$ldap = new Invite($_GET["code"], Invite::getToken($ldap_username, $ldap_password));
+$ldap = new Invite($_GET["code"], Invite::getToken(LDAP_USERNAME, LDAP_PASSWORD));
 $request = $ldap->getInviter();
 $invitedBy = $request->hasErrors() ? null : $request->getData()["user"];
 $isCodeValid = $invitedBy && $ldap->checkInvite($invitedBy);
@@ -52,9 +51,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             --secondary: #424348;
         }
 
-        a {
+        a:not(.btn) {
             --primary: #8999f0;
             --secondary: #707dcd;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            border: none;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
         }
 
         @media screen and (min-height: 45em) and (min-width: 1200px) {
@@ -104,30 +113,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="password" name="password" required minlength="8"
                                        placeholder="La sécurité, c'est important ! (le mot de passe qui a fuité 10x fera très bien l'affaire, personne ne vérifiera)">
-                                <small><em>Minimum 8 caractères</em></small>
+                                <small><em>Minimum 8 caractères, le reste, on s'en fiche</em></small>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="passwordConfirmation" class="col-sm-3 col-form-label">Confirmation du mot de passe</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation"
-                                       placeholder="On n'est jamais trop prudent, les fautes de frappes, ça arrive à tout le monde" required>
+                                       placeholder="On n'est jamais trop prudent, les fautes de frappes, ça arrive à tout le monde" required/>
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="discord" class="col-sm-3 col-form-label">Nom d'utilisateur Discord</label>
+                            <label for="discord" class="col-sm-3 col-form-label">Compte Discord</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="discord" name="discord" placeholder="Pas de triche, on vérifiera !" required>
+                                <button class="btn btn-secondary w-100" onclick="linkDiscord()" id="discordLink">Lier un compte</button>
+                                <input type="hidden" class="form-control" id="discord" name="discord" placeholder="Pas de triche, on vérifiera !" required/>
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="avatar" class="col-sm-3 col-form-label">Avatar (optionnel)</label>
+                            <label for="avatar" class="col-sm-3 col-form-label">Avatar</label>
                             <div class="col-sm-9">
                                 <!-- <div class="custom-file">
                                      <input class="custom-file-input" type="file" id="avatar" name="avatar" accept="image/jpeg"/>
                                      <div class="custom-file-label">Désolé de faire les difficiles, mais on n'aime que les JPG pour le moment</div>
                                  </div>-->
-                                <input class="form-control" type="file" id="avatar" name="avatar" accept="image/jpeg"/>
+                                <input class="form-control" type="file" id="avatar" name="avatar" accept="image/jpeg" required/>
                                 <small><em>Désolé de faire les difficiles, mais on n'aime que les JPG pour le moment</em></small>
                             </div>
                         </div>
@@ -146,5 +156,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </main>
 </div>
+
+<script>
+    function linkDiscord() {
+        window.open("https://discord.com/oauth2/authorize?client_id=1279056683066331188&response_type=code&redirect_uri=https%3A%2F%2Fjustbetter.fr%2Fdiscord&scope=identify+email+guilds", "_blank", "popup=true,width=500,height=800");
+    }
+
+    const bc = new BroadcastChannel('discord');
+    bc.onmessage = function (ev) {
+        let discordAccount = ev.data;
+        document.getElementById("discord").value = discordAccount["id"];
+        document.getElementById("discordLink").textContent = discordAccount["global_name"] + " (" + discordAccount["username"] + ")";
+    }
+</script>
+
 </body>
 </html>
