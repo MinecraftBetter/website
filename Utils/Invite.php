@@ -26,7 +26,7 @@ class Invite
     public static function getToken($username, $password)
     {
         $httpClient = new \GuzzleHttp\Client();
-        $response = $httpClient->request('POST', Invite::ENDPOINT .'auth/simple/login', [
+        $response = $httpClient->request('POST', Invite::ENDPOINT . 'auth/simple/login', [
             'json' => [
                 'username' => $username,
                 'password' => $password
@@ -115,7 +115,7 @@ MUTATION;
 
         $output = null;
         $retval = null;
-        exec('lldap_set_password -b "' . Invite::ENDPOINT . '" --token="' . $this->token . '" -u "' . $id . '" -p "' . $data['password'] . '"', $output, $retval);
+        exec('lldap_set_password -b ' . escapeshellarg(Invite::ENDPOINT) . ' --token=' . escapeshellarg($this->token) . ' -u ' . escapeshellarg($id) . ' -p ' . escapeshellarg($data['password']), $output, $retval);
 
         return $retval === 0 ? null : $this->removeAccount($id, empty($output) ? ["Invalid password"] : $output);
     }
