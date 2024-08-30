@@ -18,12 +18,13 @@ $request = $ldap->getInviter();
 $invitedBy = $request->hasErrors() ? null : $request->getData()["user"];
 $isCodeValid = $invitedBy && $ldap->checkInvite($invitedBy);
 
+$errors = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = $ldap->createAccount($_POST);
     if (!$errors) {
         header('Location: /');
         exit(303);
-    } else echo "<p>".json_encode($errors) ."</p>";
+    }
 }
 
 ?>
@@ -90,11 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php if (!$isCodeValid) { ?>
                     <h2 class="text-danger">Le code d'invitation est invalide (ou manquant)</h2>
                 <?php } else { ?>
-
                     <h2>Vous avez été invité par <strong><em><?= $invitedBy["displayName"] ?></em></strong> à rejoindre Just Better</h2>
-                    <p>Vous pouvez dès à présent créer votre compte en remplissant les champs suivants</p>
+                    <p>Vous pouvez dès à présent créer votre compte en remplissant les champs suivants <em>(tous sont obligatoires)</em></p>
 
                     <form class="mt-4" method="post" enctype="multipart/form-data">
+                        <?php if ($errors) { ?>
+                            <div class="alert alert-danger" role="alert">
+                                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                                <?= json_encode($errors) ?>
+                            </div>
+                        <?php } ?>
+
                         <div class="mb-3 row">
                             <label for="username" class="col-sm-3 col-form-label">Nom d'utilisateur</label>
                             <div class="col-sm-9">
