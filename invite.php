@@ -8,12 +8,13 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 use JustBetter\Utils\Invite;
+use JustBetter\Utils\LDAP;
 
 require __DIR__ . '/vendor/autoload.php';
 
 include '.secret.php';
 
-$ldap = new Invite($_GET["code"], Invite::getToken(LDAP_USERNAME, LDAP_PASSWORD));
+$ldap = new Invite($_GET["code"], LDAP::getToken(LDAP_USERNAME, LDAP_PASSWORD));
 $request = $ldap->getInviter();
 $invitedBy = $request->hasErrors() ? null : $request->getData()["user"];
 $isCodeValid = $invitedBy && $ldap->checkInvite($invitedBy);

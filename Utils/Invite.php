@@ -4,37 +4,26 @@ declare(strict_types=1);
 
 namespace JustBetter\Utils;
 
-use Softonic\GraphQL\Client;
-use Softonic\GraphQL\ClientBuilder;
 use Softonic\GraphQL\Response;
 
 class Invite
 {
-    private string $token;
-    private Client $client;
+    private LDAP $ldap;
     private string $inviterId;
     private string $inviterUuid;
 
     public function __construct($code, $token)
     {
-        list($this->inviterId, $this->inviterUuid) = $this->parseCode($code);
-        $this->token = $token;
-        $this->client = ClientBuilder::build(LLDAP_ENDPOINT . 'api/graphql', ['headers' => ['Authorization' => "Bearer $this->token"]]);
+        list($this->inviterId, $this->inviterUuid) = Invite::parseCode($code);
+        $this->ldap = new LDAP($token);
     }
 
-    public static function getToken($username, $password)
+    public static function getCode($id, $uuid): string
     {
-        $httpClient = new \GuzzleHttp\Client();
-        $response = $httpClient->request('POST', LLDAP_ENDPOINT . 'auth/simple/login', [
-            'json' => [
-                'username' => $username,
-                'password' => $password
-            ]
-        ]);
-        return json_decode($response->getBody()->getContents())->token;
+        return $id . "/" . substr(hash('sha256', $uuid), 0, 8);
     }
 
-    public function parseCode($code): array
+    public static function parseCode($code): array
     {
         return array_pad(explode("/", $code), 2, null);
     }
@@ -52,7 +41,7 @@ query($idInviter: String!){
 QUERY;
 
         $variables = ['idInviter' => $this->inviterId];
-        return $this->client->query($query, $variables);
+        return $this->ldap->client->query($query, $variables);
     }
 
     public function checkInvite($user): bool
@@ -94,7 +83,7 @@ MUTATION;
                 ['name' => 'invited_by', 'value' => $this->inviterId]
             ]
         ];
-        $response = $this->client->query($mutation, $variables);
+        $response = $this->ldap->client->query($mutation, $variables);
 
         if ($response->hasErrors()) return $response->getErrors();
         $id = $response->getData()['createUser']['id'];
@@ -107,16 +96,13 @@ mutation ($id: String!){
 }
 MUTATION;
         $variables = ['id' => $id];
-        $response = $this->client->query($mutation, $variables);
+        $response = $this->ldap->client->query($mutation, $variables);
 
         if ($response->hasErrors()) return $this->removeAccount($id, $response->getErrors());
         if (!$response->getData()['addUserToGroup']['ok']) return $this->removeAccount($id, ['Error adding to group']);
 
-        $output = null;
-        $retval = null;
-        exec('lldap_set_password -b ' . escapeshellarg(LLDAP_ENDPOINT) . ' --token=' . escapeshellarg($this->token) . ' -u ' . escapeshellarg($id) . ' -p ' . escapeshellarg($data['password']), $output, $retval);
-
-        return $retval === 0 ? null : $this->removeAccount($id, empty($output) ? ["Invalid password"] : $output);
+        $result = $this->ldap->changePassword($id, $data['password']);
+        return $result ? $this->removeAccount($id, $result) : null;
     }
 
     private function removeAccount($id, $error): ?array
@@ -129,7 +115,7 @@ mutation ($id: String!){
 }
 MUTATION;
         $variables = ['id' => $id];
-        $response = $this->client->query($mutation, $variables);
+        $response = $this->ldap->client->query($mutation, $variables);
 
         if ($response->hasErrors()) return [$response->getErrors(), $error];
         if (!$response->getData()['deleteUser']['ok']) return [['Error recovering from error'], $error];
