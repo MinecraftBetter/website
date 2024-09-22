@@ -10,7 +10,6 @@ use Softonic\GraphQL\Response;
 
 class Invite
 {
-    public const ENDPOINT = "https://auth.justbetter.fr/";
     private string $token;
     private Client $client;
     private string $inviterId;
@@ -20,13 +19,13 @@ class Invite
     {
         list($this->inviterId, $this->inviterUuid) = $this->parseCode($code);
         $this->token = $token;
-        $this->client = ClientBuilder::build(Invite::ENDPOINT . 'api/graphql', ['headers' => ['Authorization' => "Bearer $this->token"]]);
+        $this->client = ClientBuilder::build(LLDAP_ENDPOINT . 'api/graphql', ['headers' => ['Authorization' => "Bearer $this->token"]]);
     }
 
     public static function getToken($username, $password)
     {
         $httpClient = new \GuzzleHttp\Client();
-        $response = $httpClient->request('POST', Invite::ENDPOINT . 'auth/simple/login', [
+        $response = $httpClient->request('POST', LLDAP_ENDPOINT . 'auth/simple/login', [
             'json' => [
                 'username' => $username,
                 'password' => $password
@@ -115,7 +114,7 @@ MUTATION;
 
         $output = null;
         $retval = null;
-        exec('lldap_set_password -b ' . escapeshellarg(Invite::ENDPOINT) . ' --token=' . escapeshellarg($this->token) . ' -u ' . escapeshellarg($id) . ' -p ' . escapeshellarg($data['password']), $output, $retval);
+        exec('lldap_set_password -b ' . escapeshellarg(LLDAP_ENDPOINT) . ' --token=' . escapeshellarg($this->token) . ' -u ' . escapeshellarg($id) . ' -p ' . escapeshellarg($data['password']), $output, $retval);
 
         return $retval === 0 ? null : $this->removeAccount($id, empty($output) ? ["Invalid password"] : $output);
     }
