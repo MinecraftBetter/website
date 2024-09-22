@@ -9,15 +9,15 @@ include '.secret.php';
 use JustBetter\Utils\Invite;
 use JustBetter\Utils\LDAP;
 
-function getUserInfo($username, $password)
+function getUserInfo($uid, $token)
 {
-    $ldap = new LDAP(LDAP::getToken($username, $password));
-    $userinfo = $ldap->getUserInfo($username);
+    $ldap = new LDAP($token);
+    $userinfo = $ldap->getUserInfo($uid);
     if ($userinfo) $userinfo["invitationCode"] = Invite::getCode($userinfo["id"], $userinfo["uuid"]);
     return $userinfo;
 }
 
-$userinfo = isset($_GET["username"]) && isset($_GET["password"]) ? getUserInfo($_GET["username"], $_GET["password"]) : null;
+$userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo($_COOKIE["user_id"], $_COOKIE["token"]) : null;
 ?>
 
 <!DOCTYPE html>
@@ -88,26 +88,33 @@ $userinfo = isset($_GET["username"]) && isset($_GET["password"]) ? getUserInfo($
                     Le catalogue est constamment enrichi grâce à vos requêtes faites sur <a href="https://request.justbetter.fr">la plateforme dédiée</a>.<br/>
                     S'il a un problème avec un des films/séries/animés, merci de le signaler sur cette <a href="https://request.justbetter.fr">même plateforme</a>.
                 </p>
-                <div role="alert" class="alert alert-dark">
-                    <i class="fas fa-info-circle" aria-hidden="true"></i> Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer un,
-                    utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.
-                </div>
-                <p>
-                    Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et <strong>d'y rester</strong> sous
-                    peine d'un bannissement.<br/>
-                    <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
-                    Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
-                </p>
-                <div role="alert" class="alert alert-danger">
-                    <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-                    Il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en mentionnant qui vous a communiqué
-                    le lien du serveur.
-                    À défaut de l'avoir fait, vous pourriez faire l'objet d'un bannissement temporaire.
-                </div>
+
+                <?php if (!$userinfo) {  //TODO : To remove completely when we're ready ?>
+                    <div role="alert" class="alert alert-dark">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i> Il est nécessaire de disposer d'un compte pour pouvoir utiliser ce service, pour en créer
+                        un,
+                        utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.
+                    </div>
+                    <p>
+                        Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et <strong>d'y rester</strong>
+                        sous
+                        peine d'un bannissement.<br/>
+                        <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
+                        Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
+                    </p>
+                    <div role="alert" class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        Il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en mentionnant qui vous a
+                        communiqué
+                        le lien du serveur.
+                        À défaut de l'avoir fait, vous pourriez faire l'objet d'un bannissement temporaire.
+                    </div>
+                <?php } ?>
+
                 <p>
                     Pour utiliser ce service, il vous est <strong>requis d'installer un client Jellyfin</strong>, cela permet de grandement réduire la charge du serveur
                     et ainsi pouvoir accueillir plus de monde.<br/>
-                    Voici une liste non exhaustive des clients disponibles:
+                    Voici une liste non exhaustive des clients disponibles :
                 </p>
                 <ul>
                     <li><strong>Windows:</strong>
