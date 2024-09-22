@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace JustBetter\Utils;
 
 use Softonic\GraphQL\Client;
@@ -17,7 +18,7 @@ class LDAP
         $this->client = ClientBuilder::build(LLDAP_ENDPOINT . 'api/graphql', ['headers' => ['Authorization' => "Bearer $this->token"]]);
     }
 
-    public static function getToken($username, $password) : string
+    public static function getToken($username, $password): string
     {
         $httpClient = new \GuzzleHttp\Client();
         $response = $httpClient->request('POST', LLDAP_ENDPOINT . 'auth/simple/login', [
@@ -55,5 +56,23 @@ QUERY;
 
         $variables = ['username' => $username];
         return $this->client->query($query, $variables)->getData()["user"];
+    }
+
+    public function changeAvatar(mixed $username, ?string $avatar)
+    {
+        $mutation = <<<'MUTATION'
+mutation($id: String!, $avatar: String) {
+  updateUser(user: { id: $id, avatar: $avatar }) {
+    ok
+  }
+}
+MUTATION;
+
+        $variables = ['id' => $username, 'avatar' => $avatar];
+        $response = $this->client->query($mutation, $variables);
+
+        if ($response->hasErrors()) return $response->getErrors();
+        if (!$response->getData()['updateUser']['ok']) return ['Error changing avatar'];
+        return null;
     }
 }
