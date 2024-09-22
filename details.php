@@ -2,6 +2,22 @@
 /**********************
  * Made by Evan Galli *
  **********************/
+
+require __DIR__ . '/vendor/autoload.php';
+include '.secret.php';
+
+use JustBetter\Utils\Invite;
+use JustBetter\Utils\LDAP;
+
+function getUserInfo($username, $password)
+{
+    $ldap = new LDAP(LDAP::getToken($username, $password));
+    $userinfo = $ldap->getUserInfo($username);
+    if ($userinfo) $userinfo["invitationCode"] = Invite::getCode($userinfo["id"], $userinfo["uuid"]);
+    return $userinfo;
+}
+
+$userinfo = isset($_GET["username"]) && isset($_GET["password"]) ? getUserInfo($_GET["username"], $_GET["password"]) : null;
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +65,12 @@
                 <span>Better Place</span>
             </button>
         </div>
+
+        <?php if ($userinfo) { ?>
+            <button type="button" data-toggle="modal" data-target="#account" class="btn" style="font-size: 2.5em;padding: 0;">
+                <i class="fas fa-user-circle" style="vertical-align: text-top;margin: 0;"></i>
+            </button>
+        <?php } ?>
     </header>
 
     <main role="main" style="min-height: calc(100vh - 7rem); padding-top: 4rem;">
@@ -76,18 +98,17 @@
                     <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
                     Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
                 </p>
-                <p>
                 <div role="alert" class="alert alert-danger">
                     <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
                     Il vous est demandé d'<strong>envoyer un message</strong> dans le salon <code>#général</code> du serveur Discord en mentionnant qui vous a communiqué
                     le lien du serveur.
                     À défaut de l'avoir fait, vous pourriez faire l'objet d'un bannissement temporaire.
                 </div>
-                </p>
                 <p>
                     Pour utiliser ce service, il vous est <strong>requis d'installer un client Jellyfin</strong>, cela permet de grandement réduire la charge du serveur
                     et ainsi pouvoir accueillir plus de monde.<br/>
                     Voici une liste non exhaustive des clients disponibles:
+                </p>
                 <ul>
                     <li><strong>Windows:</strong>
                         <a href="https://github.com/jellyfin/jellyfin-media-player/releases/download/v1.9.1/JellyfinMediaPlayer-1.9.1-windows-x64.exe">
@@ -109,8 +130,7 @@
                             <strong><em>evang_</em></strong>)</small>
                     </li>
                 </ul>
-                Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr</code> en tant qu'adresse du serveur.
-                </p>
+                <p>Sur le client, veuillez entrer <code>https://jellyfin.justbetter.fr</code> en tant qu'adresse du serveur.</p>
                 <p class="lead" id="buttons" style="flex-wrap: wrap; text-align: center;">
                     <a href="https://jellyfin.justbetter.fr/" class="btn btn-custom-primary btn-lg">
                         <i class="fas fa-mouse-pointer" aria-hidden="true"></i>Accéder au service
@@ -221,7 +241,48 @@
                 quotidien dans le serveur</p>
         </div>
     </footer>
+    <div class="modal fade" id="account" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="width: 500px; height: 525px;">
+                <div class="modal-body">
+                    <div class="row mx-0">
+                        <div id="avatar"
+                             style="width: 4em;height: 4em;border-radius: 50%;background-color: var(--secondary);overflow: hidden;display: flex;align-content: center;justify-content: center;background-repeat: no-repeat;background-size: cover;"></div>
+                        <div class="ml-3" style="align-self: center;">
+                            <p class="m-0" id="displayName"></p>
+                            <small>@<span id="username"></span></small>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <small><i class="fas fa-clock" title="Date de création du compte"></i> <span id="creationDate"></span></small><br/>
+                        <small><i class="fas fa-envelope" title="Adresse email"></i> <span id="email"></span></small>
+                    </div>
+
+                    <hr/>
+
+                    <div class="mb-3">
+                        <label for="invite_code" class="col-form-label">Lien d'invitation</label>
+                        <input type="text" readonly class="form-control" id="invite_code" onclick="this.select()"/>
+                    </div>
+
+                    <script>
+                        let user = <?= json_encode($userinfo) ?>;
+                        let avatar = user.attributes.find(attr => attr.name === "avatar")?.value;
+                        document.getElementById("avatar").style.backgroundImage = avatar ? "url(data:image/jpg;base64," + avatar + ")" : null;
+                        document.getElementById("displayName").innerText = user.displayName;
+                        document.getElementById("username").innerText = user.id;
+                        document.getElementById("creationDate").innerText = new Date(user["creationDate"]).toLocaleString();
+                        document.getElementById("email").innerText = user.email;
+                        document.getElementById("invite_code").value = "https://justbetter.fr/invite?code=" + user["invitationCode"];
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
 </body>
 </html>

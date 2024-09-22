@@ -37,6 +37,8 @@ a:focus, a:hover {
 }
 
 .modal-content {
+  border-radius: 1em;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
   background-color: #343434;
 }
 
@@ -167,7 +169,7 @@ header.scrolled {
   background: hsla(0, 0%, 20.8%, 0.85);
 }
 
-select.custom-select, .custom-file-label, input.form-control, input.form-control:focus, input.form-control::placeholder {
+select.custom-select, .custom-file-label, input.form-control, input.form-control:focus, input.form-control::placeholder, .form-control:disabled, .form-control[readonly] {
   background-color: var(--secondary);
   border: none;
   color: white;
@@ -356,8 +358,13 @@ select.custom-select, .custom-file-label, input.form-control, input.form-control
 .site img {
   transition: transform 0.5s;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .site span {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .site {
     display: none;
   }
 }
