@@ -55,7 +55,11 @@ query($username: String!){
 QUERY;
 
         $variables = ['username' => $username];
-        return $this->client->query($query, $variables)->getData()["user"];
+        try {
+            return $this->client->query($query, $variables)->getData()["user"];
+        } catch (\Exception) {
+            return null;
+        }
     }
 
     public function changeAvatar(mixed $username, ?string $avatar)
@@ -71,8 +75,12 @@ MUTATION;
         $variables = ['id' => $username, 'avatar' => $avatar];
         $response = $this->client->query($mutation, $variables);
 
-        if ($response->hasErrors()) return $response->getErrors();
-        if (!$response->getData()['updateUser']['ok']) return ['Error changing avatar'];
-        return null;
+        try {
+            if ($response->hasErrors()) return $response->getErrors();
+            if (!$response->getData()['updateUser']['ok']) return ['Error changing avatar'];
+            return null;
+        } catch (\Exception $e) {
+            return [$e->getMessage()];
+        }
     }
 }
