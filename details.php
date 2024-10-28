@@ -329,13 +329,19 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                                     if ((encoded.length % 4) > 0) {
                                         encoded += '='.repeat(4 - (encoded.length % 4));
                                     }
-                                    console.log(encoded);
+
+                                    graphQL("mutation ($id: String!, $avatar: String) { updateUser(user: {id: $id, avatar: $avatar}) { ok } }", {
+                                        "id": user.id,
+                                        "avatar": encoded
+                                    }).then(res => {
+                                        /* TODO: Refresh avatar */
+                                    });
                                 };
                             }
                             input.click();
                         }
 
-                        function checkPasswordInputs(){
+                        function checkPasswordInputs() {
                             if (!old_pass.value)
                                 old_pass.setCustomValidity("Field must be entered");
                             else old_pass.setCustomValidity("");
@@ -353,6 +359,23 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
 
                         function changePassword() {
                             console.log(old_pass.value + " -> " + new_pass.value);
+                        }
+
+                        async function graphQL(query, variables){
+                            let req = await fetch("https://lldap.justbetter.fr/api/graphql", {
+                                method: "post",
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                    'Authorization': 'Bearer <?= $_COOKIE["token"] ?>'
+                                },
+                                body: JSON.stringify({
+                                    "operationName": null,
+                                    "variables": variables,
+                                    "query": query
+                                })
+                            });
+                            return await req.json();
                         }
                     </script>
                 </div>
