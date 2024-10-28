@@ -424,4 +424,26 @@ body .site-details.hidden {
   display: none;
 }
 
+#account.modal #avatar {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: var(--secondary);
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#account.modal #avatar > * {
+  opacity: 0;
+}
+#account.modal #avatar:hover > * {
+  opacity: 100%;
+  transition: opacity 0.25s;
+  background: rgba(0, 0, 0, 0.4666666667);
+  font-size: 0.75em;
+}
+
 /*# sourceMappingURL=main.css.map */

@@ -111,6 +111,8 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                     </div>
                 <?php } ?>
 
+                <hr/>
+
                 <p>
                     Pour utiliser ce service, il vous est <strong>requis d'installer un client Jellyfin</strong>, cela permet de grandement réduire la charge du serveur
                     et ainsi pouvoir accueillir plus de monde.<br/>
@@ -250,19 +252,24 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
     </footer>
     <div class="modal fade" id="account" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="width: 500px; height: 525px;">
+            <div class="modal-content">
                 <div class="modal-body">
-                    <div class="row mx-0">
-                        <div id="avatar"
-                             style="width: 4em;height: 4em;border-radius: 50%;background-color: var(--secondary);overflow: hidden;display: flex;align-content: center;justify-content: center;background-repeat: no-repeat;background-size: cover;"></div>
-                        <div class="ml-3" style="align-self: center;">
-                            <p class="m-0" id="displayName"></p>
-                            <small>@<span id="username"></span></small>
+                    <div>
+                        <div class="row mx-0">
+                            <div id="avatar">
+                                <div class="text-center d-table w-100 h-100">
+                                    <p class="d-table-cell align-middle font-weight-bold">Changer</p>
+                                </div>
+                            </div>
+                            <div class="ml-3" style="align-self: center;">
+                                <p class="m-0" id="displayName"></p>
+                                <small><em id="username"></em></small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mt-3">
-                        <small><i class="fas fa-clock" title="Date de création du compte"></i> <span id="creationDate"></span></small><br/>
-                        <small><i class="fas fa-envelope" title="Adresse email"></i> <span id="email"></span></small>
+                        <div class="mt-3">
+                            <small><i class="fas fa-clock" title="Date de création du compte"></i> <span id="creationDate"></span></small><br/>
+                            <small><i class="fas fa-envelope" title="Adresse email"></i> <span id="email"></span></small>
+                        </div>
                     </div>
 
                     <hr/>
@@ -272,15 +279,81 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                         <input type="text" readonly class="form-control" id="invite_code" onclick="this.select()"/>
                     </div>
 
+                    <hr/>
+
+                    <div>
+                        <details>
+                            <summary class="font-weight-bold mb-3">Changer le mot de passe</summary>
+                            <form id="change-password">
+                                <label for="old_password" class="col-form-label">Mot de passe actuel</label>
+                                <input type="password" class="form-control" id="old_password" required/>
+                                <label for="new_password" class="col-form-label">Nouveau mot de passe</label>
+                                <input type="password" class="form-control" id="new_password" minlength="8" required/>
+                                <label for="new_conf_password" class="col-form-label">Confirmation du mot de passe</label>
+                                <input type="password" class="form-control" id="new_conf_password" minlength="8" required/>
+                                <button class="btn btn-dark mt-3 w-100" type="submit">Sauvegarder</button>
+                            </form>
+                        </details>
+                    </div>
+
                     <script>
                         let user = <?= json_encode($userinfo) ?>;
                         let avatar = user.attributes.find(attr => attr.name === "avatar")?.value;
                         document.getElementById("avatar").style.backgroundImage = avatar ? "url(data:image/jpg;base64," + avatar + ")" : null;
+                        document.getElementById("avatar").onclick = _ => changeAvatar();
                         document.getElementById("displayName").innerText = user.displayName;
                         document.getElementById("username").innerText = user.id;
                         document.getElementById("creationDate").innerText = new Date(user["creationDate"]).toLocaleString();
                         document.getElementById("email").innerText = user.email;
                         document.getElementById("invite_code").value = "https://justbetter.fr/invite?code=" + user["invitationCode"];
+                        let old_pass = document.getElementById("old_password");
+                        let new_pass = document.getElementById("new_password");
+                        let conf_pass = document.getElementById("new_conf_password");
+                        old_pass.value = new_pass.value = conf_pass.value = null;
+                        old_pass.oninput = new_pass.oninput = conf_pass.oninput = () => checkPasswordInputs();
+                        document.getElementById("change-password").onsubmit = ev => {
+                            ev.preventDefault();
+                            changePassword();
+                        }
+
+                        function changeAvatar() {
+                            let input = document.createElement('input');
+                            input.type = 'file';
+                            input.accept = "image/jpeg";
+                            input.onchange = e => {
+                                let file = e.target.files[0];
+                                const reader = new FileReader();
+                                reader.readAsDataURL(file);
+                                reader.onload = () => {
+                                    let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+                                    if ((encoded.length % 4) > 0) {
+                                        encoded += '='.repeat(4 - (encoded.length % 4));
+                                    }
+                                    console.log(encoded);
+                                };
+                            }
+                            input.click();
+                        }
+
+                        function checkPasswordInputs(){
+                            if (!old_pass.value)
+                                old_pass.setCustomValidity("Field must be entered");
+                            else old_pass.setCustomValidity("");
+
+                            if (!new_pass.value)
+                                new_pass.setCustomValidity("Field must be entered");
+                            else if (new_pass.value.length < 8)
+                                new_pass.setCustomValidity("Password must be 8 characters long");
+                            else new_pass.setCustomValidity("");
+
+                            if (conf_pass.value !== new_pass.value)
+                                conf_pass.setCustomValidity("Passwords don't match");
+                            else conf_pass.setCustomValidity("");
+                        }
+
+                        function changePassword() {
+                            console.log(old_pass.value + " -> " + new_pass.value);
+                        }
                     </script>
                 </div>
             </div>

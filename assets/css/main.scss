@@ -461,3 +461,29 @@ body {
     }
   }
 }
+
+#account.modal {
+  #avatar {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    overflow: hidden;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    & > * {
+      opacity: 0;
+    }
+
+    &:hover > * {
+      opacity: 100%;
+      transition: opacity 0.25s;
+      background: #0007;
+      font-size: 0.75em;
+    }
+  }
+}
