@@ -121,6 +121,7 @@
             </div>
             <div class="modal-body">
                 <div class="alert alert-dark" role="alert">
+                    <p class="mb-2"><strong><i class="fas fa-info-circle" aria-hidden="true"></i> Notes</strong></p>
                     <span id="game-notes"></span>
                 </div>
                 <p id="game-desc"></p>
@@ -188,7 +189,7 @@
             gameList.appendChild(item);
             item.onclick = () => openGameInfo(game);
 
-            item.querySelector(".game-title").innerHTML = game.metadata ? game.metadata.title + (game.title !== game.metadata.title ? '<br/><small style="font-size:.5em;">[' + game.title + "]</small>" : "") : game.title;
+            item.querySelector(".game-title").innerHTML = (game.metadata ? game.metadata.title : game.title) + (game.version ? "<br/><small style=\"color: #aaa;\"><em>"+game.version+"</em></small>" : "");
             item.querySelector(".game-cover").src = game.metadata ? getUrl("/media/" + game.metadata.cover.id) : "";
         }
     }
