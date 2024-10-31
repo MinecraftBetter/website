@@ -390,12 +390,6 @@ select.custom-select, .custom-file-label, input.form-control, input.form-control
       display: none;
     }
   }
-
-  @media (max-width: 600px) {
-    & {
-      display: none;
-    }
-  }
 }
 
 
@@ -428,6 +422,12 @@ body {
 
         @media (max-width: 800px) {
           padding: .375rem .5rem;
+        }
+
+        @media (max-width: 600px) {
+          & {
+            display: none;
+          }
         }
 
         &:not(:last-child) {

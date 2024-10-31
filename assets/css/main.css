@@ -365,11 +365,6 @@ select.custom-select, .custom-file-label, input.form-control, input.form-control
     display: none;
   }
 }
-@media (max-width: 600px) {
-  .site {
-    display: none;
-  }
-}
 
 body {
   background-image: linear-gradient(to top, rgba(30, 30, 30, 0.968627451), rgba(30, 30, 30, 0.968627451)), url("/assets/img/background.jpg");
@@ -399,6 +394,11 @@ body.details .masthead .sites .site {
 @media (max-width: 800px) {
   body.details .masthead .sites .site {
     padding: 0.375rem 0.5rem;
+  }
+}
+@media (max-width: 600px) {
+  body.details .masthead .sites .site {
+    display: none;
   }
 }
 body.details .masthead .sites .site:not(:last-child) {
