@@ -25,10 +25,12 @@ a {
 .alert {
   &.alert-primary {
     background-color: var(--primary);
+    border: none;
   }
 
   &.alert-secondary {
     background-color: var(--secondary);
+    border: none;
   }
 
   &.alert-dark {

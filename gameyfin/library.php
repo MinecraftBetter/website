@@ -61,6 +61,10 @@
             -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
             background-color: rgba(0, 0, 0, 0.2);
         }
+
+        .alert:has(#game-notes:empty) {
+            display: none;
+        }
     </style>
 </head>
 
@@ -104,19 +108,21 @@
                 </div>
                 <div class="flex-grow-1 d-flex flex-column">
                     <h5 class="modal-title" id="game-title">Game title</h5>
-                    <small><i class="fas fa-calendar-plus" aria-hidden="true"></i><span id="game-added"></span></small>
-                    <small><i class="fas fa-calendar" aria-hidden="true"></i><span id="game-release"></span></small>
-                    <small><i class="fas fa-code-branch" aria-hidden="true"></i><span id="game-version"></span></small>
+                    <small><i class="fas fa-calendar-plus" aria-hidden="true" title="Game added at"></i><span id="game-added"></span></small>
+                    <small><i class="fas fa-calendar" aria-hidden="true" title="Game released at"></i><span id="game-release"></span></small>
+                    <small><i class="fas fa-code-branch" aria-hidden="true" title="Game version"></i><span id="game-version"></span></small>
                     <small><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
-                    <small><i class="fas fa-comments" aria-hidden="true"></i><span id="game-metacritic"></span></small>
-                    <small><i class="fas fa-paper-plane" aria-hidden="true"></i><span id="game-publishers"></span></small>
-                    <small><i class="fas fa-code" aria-hidden="true"></i><span id="game-developers"></span></small>
-                    <small><i class="fas fa-store-alt" aria-hidden="true"></i><span id="game-stores"></span></small>
-                    <small><i class="fas fa-tags" aria-hidden="true"></i><span id="game-tags"></span></small>
-                    <small><i class="fas fa-swatchbook" aria-hidden="true"></i><span id="game-genres"></span></small>
+                    <small><i class="fas fa-comments" aria-hidden="true" title="Game reviews"></i><span id="game-metacritic"></span></small>
+                    <small><i class="fas fa-paper-plane" aria-hidden="true" title="Game publishers"></i><span id="game-publishers"></span></small>
+                    <small><i class="fas fa-code" aria-hidden="true" title="Game developers"></i><span id="game-developers"></span></small>
+                    <small><i class="fas fa-tags" aria-hidden="true" title="Game tags"></i><span id="game-tags"></span></small>
+                    <small><i class="fas fa-swatchbook" aria-hidden="true" title="Game genres"></i><span id="game-genres"></span></small>
                 </div>
             </div>
             <div class="modal-body">
+                <div class="alert alert-dark" role="alert">
+                    <span id="game-notes"></span>
+                </div>
                 <p id="game-desc"></p>
             </div>
             <div class="modal-footer">
@@ -159,7 +165,7 @@
 
     const sortField = document.getElementById("sort_by");
     const searchField = document.getElementById("search");
-    sortField.onchange = searchField.onchange = function () {
+    sortField.onchange = searchField.oninput = function () {
         while (gameList.lastElementChild) gameList.removeChild(gameList.lastElementChild);
         getGames();
     };
@@ -182,8 +188,8 @@
             gameList.appendChild(item);
             item.onclick = () => openGameInfo(game);
 
-            item.querySelector(".game-title").innerHTML = game.rawg_title + (game.title !== game.rawg_title ? '<br/><small style="font-size:.5em;">[' + game.title + "]</small>" : "");
-            item.querySelector(".game-cover").src = getUrl("/images/" + game.box_image.id);
+            item.querySelector(".game-title").innerHTML = game.metadata ? game.metadata.title + (game.title !== game.metadata.title ? '<br/><small style="font-size:.5em;">[' + game.title + "]</small>" : "") : game.title;
+            item.querySelector(".game-cover").src = game.metadata ? getUrl("/media/" + game.metadata.cover.id) : "";
         }
     }
 
@@ -191,21 +197,21 @@
         openedGame = await (await fetch(getUrl("/games/" + game.id))).json();
         $(modalNode).modal('show');
 
-        modalNode.querySelector("#game-title").innerHTML = game.rawg_title + (game.title !== game.rawg_title ? " <small>[" + game.title + "]</small>" : "");
+        modalNode.querySelector("#game-title").innerHTML = game.metadata.title + (game.title !== game.metadata.title ? " <small>[" + game.title + "]</small>" : "");
         modalNode.querySelector("#game-added").innerText = new Date(openedGame.created_at).toDateString();
         modalNode.querySelector("#game-release").innerText = new Date(openedGame.release_date).toDateString();
         modalNode.querySelector("#game-version").innerText = openedGame.version ?? "Unknown";
-        modalNode.querySelector("#game-website").href = openedGame.website_url ?? "#";
-        modalNode.querySelector("#game-metacritic").innerText = openedGame.metacritic_rating ? (openedGame.metacritic_rating + " / 100") : "Unknown";
-        modalNode.querySelector("#game-publishers").innerText = openedGame.publishers.map(p => p.name).join(", ");
-        modalNode.querySelector("#game-developers").innerText = openedGame.developers.map(p => p.name).join(", ");
-        modalNode.querySelector("#game-stores").innerText = openedGame.stores.map(p => p.name).join(", ");
-        modalNode.querySelector("#game-tags").innerText = openedGame.tags.map(p => p.name).join(", ");
-        modalNode.querySelector("#game-genres").innerText = openedGame.genres.map(p => p.name).join(", ");
-        modalNode.querySelector("#game-desc").innerHTML = markdownConverter.makeHtml(openedGame.description);
+        modalNode.querySelector("#game-website").href = openedGame.metadata?.url_websites?.[0] ?? "#";
+        modalNode.querySelector("#game-metacritic").innerText = openedGame.metadata?.rating ? (openedGame.metadata.rating + " / 100") : "Unknown";
+        modalNode.querySelector("#game-publishers").innerText = openedGame.metadata?.publishers.map(p => p.name).join(", ");
+        modalNode.querySelector("#game-developers").innerText = openedGame.metadata?.developers.map(p => p.name).join(", ");
+        modalNode.querySelector("#game-tags").innerText = openedGame.metadata?.tags.map(p => p.name).join(", ");
+        modalNode.querySelector("#game-genres").innerText = openedGame.metadata?.genres.map(p => p.name).join(", ");
+        modalNode.querySelector("#game-desc").innerHTML = markdownConverter.makeHtml(openedGame.metadata?.description);
+        modalNode.querySelector("#game-notes").innerHTML = markdownConverter.makeHtml(openedGame.metadata?.notes);
         modalNode.querySelector("#game-size").innerText = (openedGame.size / 1000000000).toFixed(2) + " Go";
-        modalNode.querySelector("#game-cover").src = getUrl("/images/" + openedGame.box_image.id);
-        modalNode.querySelector(".modal-content").style.backgroundImage = "url(" + getUrl("/images/" + openedGame.background_image.id) + ")";
+        modalNode.querySelector("#game-cover").src = openedGame.metadata ? getUrl("/media/" + openedGame.metadata.cover.id) : "";
+        modalNode.querySelector(".modal-content").style.backgroundImage = openedGame.metadata ? "url(" + getUrl("/media/" + openedGame.metadata.background.id) + ")" : "";
     }
 
     getGames();

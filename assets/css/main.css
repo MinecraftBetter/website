@@ -22,9 +22,11 @@ a:focus, a:hover {
 
 .alert.alert-primary {
   background-color: var(--primary);
+  border: none;
 }
 .alert.alert-secondary {
   background-color: var(--secondary);
+  border: none;
 }
 .alert.alert-dark {
   background-color: #404040;
