@@ -122,7 +122,7 @@
                 <div class="flex-grow-1 d-flex flex-column text-center text-md-left">
                     <h5 class="modal-title">
                         <strong id="game-title" style="font-size: 2.25rem;"></strong>
-                        <small id="game-filename" class="d-none d-md-inline"></small>
+                        <small id="game-filename" class="d-none d-md-inline" style="color: lightgray;"></small>
                     </h5>
                     <small class="d-none d-md-inline"><i class="fas fa-calendar-plus" aria-hidden="true" title="Game added at"></i><span
                                 id="game-added"></span></small>
@@ -221,7 +221,7 @@
         $(modalNode).modal('show');
 
         modalNode.querySelector("#game-title").innerText = game.metadata.title;
-        modalNode.querySelector("#game-filename").innerText = game.title !== game.metadata.title ? "[" + game.title + "]" : "";
+        modalNode.querySelector("#game-filename").innerText = game.title !== game.metadata.title ? game.title : "";
         modalNode.querySelector("#game-added").innerText = new Date(openedGame.created_at).toDateString();
         modalNode.querySelector("#game-release").innerText = new Date(openedGame.release_date).toDateString();
         modalNode.querySelector("#game-version").innerText = openedGame.version ?? "Unknown";
