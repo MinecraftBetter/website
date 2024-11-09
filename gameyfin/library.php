@@ -59,7 +59,16 @@
         #game-info .modal-content > div {
             backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
             -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
-            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        #game-preview {
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: visible;
+        }
+
+        #game-preview > * {
+            height: 15em;
         }
 
         .alert:has(#game-notes:empty) {
@@ -70,9 +79,12 @@
 
 <body class="d-flex details">
 <div class="mx-auto">
-    <header class="masthead mb-auto" style="color: var(--white); grid-template: 3rem/200px 1fr;">
+    <header class="masthead mb-auto" style="color: var(--white); grid-template: 3rem / auto 1fr; gap: 1rem;">
         <div class="inner">
-            <a href="/"><img class="masthead-brand" src="/assets/img/banners/gameyfin.png" alt="GameVault"/></a>
+            <a href="/">
+                <img class="masthead-brand d-none d-md-inline-block" src="/assets/img/banners/gameyfin.png" alt="GameVault"/>
+                <img class="masthead-brand d-inline-block d-md-none" src="/assets/img/logos/gameyfin.png" alt="GameVault"/>
+            </a>
         </div>
         <div class="d-flex justify-content-end align-items-center">
             <select id="sort_by" class="custom-select mr-3" style="max-width: 10rem;">
@@ -100,29 +112,39 @@
 </div>
 
 <div class="modal fade" id="game-info" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div style="height: 15em;" class="mr-4">
-                    <img id="game-cover" class="h-100" alt="cover"/>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+         style="margin: 1.5em;width: calc(100% - 3em);height: calc(100% - 3em);max-width: unset;min-width: unset;max-height: unset;min-height: unset;">
+        <div class="modal-content w-100 h-100" style="overflow-y: auto">
+            <div class="modal-header align-items-center flex-column flex-md-row">
+                <div style="height: 15em;" class="mr-md-4">
+                    <img id="game-cover" class="h-100" src="" alt="cover"/>
                 </div>
-                <div class="flex-grow-1 d-flex flex-column">
-                    <h5 class="modal-title" id="game-title">Game title</h5>
-                    <small><i class="fas fa-calendar-plus" aria-hidden="true" title="Game added at"></i><span id="game-added"></span></small>
-                    <small><i class="fas fa-calendar" aria-hidden="true" title="Game released at"></i><span id="game-release"></span></small>
+                <div class="flex-grow-1 d-flex flex-column text-center text-md-left">
+                    <h5 class="modal-title">
+                        <strong id="game-title" style="font-size: 2.25rem;"></strong>
+                        <small id="game-filename" class="d-none d-md-inline"></small>
+                    </h5>
+                    <small class="d-none d-md-inline"><i class="fas fa-calendar-plus" aria-hidden="true" title="Game added at"></i><span
+                                id="game-added"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-calendar" aria-hidden="true" title="Game released at"></i><span
+                                id="game-release"></span></small>
                     <small><i class="fas fa-code-branch" aria-hidden="true" title="Game version"></i><span id="game-version"></span></small>
-                    <small><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
-                    <small><i class="fas fa-comments" aria-hidden="true" title="Game reviews"></i><span id="game-metacritic"></span></small>
-                    <small><i class="fas fa-paper-plane" aria-hidden="true" title="Game publishers"></i><span id="game-publishers"></span></small>
-                    <small><i class="fas fa-code" aria-hidden="true" title="Game developers"></i><span id="game-developers"></span></small>
-                    <small><i class="fas fa-tags" aria-hidden="true" title="Game tags"></i><span id="game-tags"></span></small>
-                    <small><i class="fas fa-swatchbook" aria-hidden="true" title="Game genres"></i><span id="game-genres"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website"></a></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-comments" aria-hidden="true" title="Game reviews"></i><span
+                                id="game-metacritic"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-paper-plane" aria-hidden="true" title="Game publishers"></i><span
+                                id="game-publishers"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-code" aria-hidden="true" title="Game developers"></i><span id="game-developers"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-tags" aria-hidden="true" title="Game tags"></i><span id="game-tags"></span></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-swatchbook" aria-hidden="true" title="Game genres"></i><span id="game-genres"></span></small>
                 </div>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="overflow: unset;">
                 <div class="alert alert-dark" role="alert">
                     <p class="mb-2"><strong><i class="fas fa-info-circle" aria-hidden="true"></i> Notes</strong></p>
                     <span id="game-notes"></span>
+                </div>
+                <div id="game-preview">
                 </div>
                 <p id="game-desc"></p>
             </div>
@@ -189,7 +211,7 @@
             gameList.appendChild(item);
             item.onclick = () => openGameInfo(game);
 
-            item.querySelector(".game-title").innerHTML = (game.metadata ? game.metadata.title : game.title) + (game.version ? "<br/><small style=\"color: #aaa;\"><em>"+game.version+"</em></small>" : "");
+            item.querySelector(".game-title").innerHTML = (game.metadata ? game.metadata.title : game.title) + (game.version ? "<br/><small style=\"color: #aaa;\"><em>" + game.version + "</em></small>" : "");
             item.querySelector(".game-cover").src = game.metadata ? getUrl("/media/" + game.metadata.cover.id) : "";
         }
     }
@@ -198,7 +220,8 @@
         openedGame = await (await fetch(getUrl("/games/" + game.id))).json();
         $(modalNode).modal('show');
 
-        modalNode.querySelector("#game-title").innerHTML = game.metadata.title + (game.title !== game.metadata.title ? " <small>[" + game.title + "]</small>" : "");
+        modalNode.querySelector("#game-title").innerText = game.metadata.title;
+        modalNode.querySelector("#game-filename").innerText = game.title !== game.metadata.title ? "[" + game.title + "]" : "";
         modalNode.querySelector("#game-added").innerText = new Date(openedGame.created_at).toDateString();
         modalNode.querySelector("#game-release").innerText = new Date(openedGame.release_date).toDateString();
         modalNode.querySelector("#game-version").innerText = openedGame.version ?? "Unknown";
@@ -212,7 +235,22 @@
         modalNode.querySelector("#game-notes").innerHTML = markdownConverter.makeHtml(openedGame.metadata?.notes);
         modalNode.querySelector("#game-size").innerText = (openedGame.size / 1000000000).toFixed(2) + " Go";
         modalNode.querySelector("#game-cover").src = openedGame.metadata ? getUrl("/media/" + openedGame.metadata.cover.id) : "";
-        modalNode.querySelector(".modal-content").style.backgroundImage = openedGame.metadata ? "url(" + getUrl("/media/" + openedGame.metadata.background.id) + ")" : "";
+
+        let carousel = modalNode.querySelector("#game-preview");
+        carousel.innerHTML = "";
+        for (let screenshot of openedGame.metadata.url_screenshots) {
+            let img = document.createElement("img");
+            img.src = screenshot;
+            carousel.appendChild(img);
+        }
+        for (let trailer of openedGame.metadata.url_trailers) {
+            let video = document.createElement("iframe");
+            video.src = trailer.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/");
+            video.setAttribute("frameborder", "0");
+            video.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+            video.setAttribute("allowfullscreen", "true");
+            carousel.appendChild(video);
+        }
     }
 
     getGames();
