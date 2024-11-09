@@ -54,15 +54,12 @@
         #game-info .modal-content {
             background-size: cover;
             background-position: center;
-        }
-
-        #game-info .modal-content > div {
-            backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
-            -webkit-backdrop-filter: blur(5px) grayscale(0.2) brightness(0.5);
+            background-image: linear-gradient(to right top, #83511c, #84511e, #845120, #855222, #855224, #865327, #875529, #88562c, #8a5830, #8c5a34, #8e5c38, #905e3c);
         }
 
         #game-preview {
             display: flex;
+            gap: 5px;
             overflow-y: hidden;
             overflow-x: visible;
         }
@@ -117,7 +114,7 @@
         <div class="modal-content w-100 h-100" style="overflow-y: auto">
             <div class="modal-header align-items-center flex-column flex-md-row">
                 <div style="height: 15em;" class="mr-md-4">
-                    <img id="game-cover" class="h-100" src="" alt="cover"/>
+                    <img id="game-cover" class="h-100" src="" alt="cover" style="border-radius: .75em;"/>
                 </div>
                 <div class="flex-grow-1 d-flex flex-column text-center text-md-left">
                     <h5 class="modal-title">
@@ -129,7 +126,7 @@
                     <small class="d-none d-md-inline"><i class="fas fa-calendar" aria-hidden="true" title="Game released at"></i><span
                                 id="game-release"></span></small>
                     <small><i class="fas fa-code-branch" aria-hidden="true" title="Game version"></i><span id="game-version"></span></small>
-                    <small class="d-none d-md-inline"><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website"></a></small>
+                    <small class="d-none d-md-inline"><i class="fas fa-globe" aria-hidden="true"></i><a id="game-website">Website</a></small>
                     <small class="d-none d-md-inline"><i class="fas fa-comments" aria-hidden="true" title="Game reviews"></i><span
                                 id="game-metacritic"></span></small>
                     <small class="d-none d-md-inline"><i class="fas fa-paper-plane" aria-hidden="true" title="Game publishers"></i><span
@@ -144,7 +141,7 @@
                     <p class="mb-2"><strong><i class="fas fa-info-circle" aria-hidden="true"></i> Notes</strong></p>
                     <span id="game-notes"></span>
                 </div>
-                <div id="game-preview">
+                <div id="game-preview" class="mb-3">
                 </div>
                 <p id="game-desc"></p>
             </div>
@@ -221,12 +218,12 @@
         $(modalNode).modal('show');
 
         modalNode.querySelector("#game-title").innerText = game.metadata.title;
-        modalNode.querySelector("#game-filename").innerText = game.title !== game.metadata.title ? game.title : "";
-        modalNode.querySelector("#game-added").innerText = new Date(openedGame.created_at).toDateString();
-        modalNode.querySelector("#game-release").innerText = new Date(openedGame.release_date).toDateString();
+        modalNode.querySelector("#game-filename").innerText = game.title.toLowerCase() !== game.metadata.title.toLowerCase() ? game.title : "";
+        modalNode.querySelector("#game-added").innerText = openedGame.created_at ? new Date(openedGame.created_at).toDateString() : "Unknown";
+        modalNode.querySelector("#game-release").innerText = openedGame.release_date ? new Date(openedGame.release_date).toDateString() : "Unknown";
         modalNode.querySelector("#game-version").innerText = openedGame.version ?? "Unknown";
         modalNode.querySelector("#game-website").href = openedGame.metadata?.url_websites?.[0] ?? "#";
-        modalNode.querySelector("#game-metacritic").innerText = openedGame.metadata?.rating ? (openedGame.metadata.rating + " / 100") : "Unknown";
+        modalNode.querySelector("#game-metacritic").innerText = openedGame.metadata?.rating ? (openedGame.metadata.rating.toFixed(0) + " %") : "Unknown";
         modalNode.querySelector("#game-publishers").innerText = openedGame.metadata?.publishers.map(p => p.name).join(", ");
         modalNode.querySelector("#game-developers").innerText = openedGame.metadata?.developers.map(p => p.name).join(", ");
         modalNode.querySelector("#game-tags").innerText = openedGame.metadata?.tags.map(p => p.name).join(", ");
