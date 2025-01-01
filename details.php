@@ -329,6 +329,12 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                         </details>
                     </div>
 
+                    <hr/>
+
+                    <div>
+                        <button class="btn btn-dark mt-3 w-100" onclick="disconnect()">Me déconnecter</button>
+                    </div>
+
                     <script>
                         let user = <?= json_encode($userinfo) ?>;
                         let avatar = user.attributes.find(attr => attr.name === "avatar")?.value;
@@ -403,11 +409,16 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                                 if (res.ok) {
                                     document.getElementById("change-password-details").open = false;
                                     old_pass.value = new_pass.value = conf_pass.value = null;
-                                }
-                                else {
+                                } else {
                                     res.json().then(body => alert("An error has occurred while changing the password : " + body));
                                 }
                             });
+                        }
+
+                        function disconnect() {
+                            document.cookie = "user_id=;expires=" + new Date(0).toUTCString();
+                            document.cookie = "token=;expires=" + new Date(0).toUTCString();
+                            window.location.reload();
                         }
 
                         async function graphQL(query, variables) {
