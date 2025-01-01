@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <p class="mt-5">
-                            En créant un compte Just Better, vous acceptez de rejoindre notre <a href="https://discord.gg/Dce4dewQ7D">serveur Discord</a>
+                            En créant un compte Just Better, vous acceptez de rejoindre notre <a href="https://discord.gg/DdXbeGzQSb">serveur Discord</a>
                             et <strong>d'y rester</strong> sous peine d'un bannissement.<br/>
                             Cette mesure nous permet de pouvoir communiquer avec vous si des changements importants ont lieu.
                         </p>

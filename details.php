@@ -96,7 +96,7 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                         utilisez <a href="https://jfago.justbetter.fr/invite/tM7jmbFsFGL2tLuYdRFyTT">l'assistant</a>.
                     </div>
                     <p>
-                        Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/Dce4dewQ7D">notre Discord</a> et <strong>d'y rester</strong>
+                        Toute personne créant un compte est tenue de rejoindre <a href="https://discord.gg/DdXbeGzQSb">notre Discord</a> et <strong>d'y rester</strong>
                         sous
                         peine d'un bannissement.<br/>
                         <small>(merci de contacter <strong><em>tiagolmon</em></strong> pour toute contestation)</small><br/>
