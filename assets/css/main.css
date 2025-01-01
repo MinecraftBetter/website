@@ -3,7 +3,7 @@ body {
   height: 100%;
   min-width: 300px;
   --primary: lightgrey;
-  --secondary: grey;
+  --secondary: #555;
 }
 
 body {

@@ -3,6 +3,10 @@
  * Made by Evan Galli *
  **********************/
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
 require __DIR__ . '/vendor/autoload.php';
 include '.secret.php';
 
@@ -15,6 +19,35 @@ function getUserInfo($uid, $token)
     $userinfo = $ldap->getUserInfo($uid);
     if ($userinfo) $userinfo["invitationCode"] = Invite::getCode($userinfo["id"], $userinfo["uuid"]);
     return $userinfo;
+}
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    header("Content-type: application/json");
+    if (!isset($_POST["username"], $_POST["old_password"], $_POST["new_password"])) {
+        echo json_encode("Missing fields");
+        http_response_code(400);
+        exit();
+    }
+    $token = null;
+    try {
+        $token = LDAP::getToken($_POST["username"], $_POST["old_password"]);
+    } catch (\Exception $_) {
+    }
+    if (!$token) {
+        echo json_encode("Wrong password");
+        http_response_code(400);
+        exit();
+    }
+    $ldap = new LDAP($token);
+    $errors = $ldap->changePassword($_POST["username"], $_POST["new_password"]);
+    if ($errors) {
+        echo json_encode($errors);
+        http_response_code(500);
+        exit();
+    }
+    echo json_encode("Changed successfully");
+    exit();
 }
 
 $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo($_COOKIE["user_id"], $_COOKIE["token"]) : null;
@@ -282,7 +315,7 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                     <hr/>
 
                     <div>
-                        <details>
+                        <details id="change-password-details">
                             <summary class="font-weight-bold mb-3">Changer le mot de passe</summary>
                             <form id="change-password">
                                 <label for="old_password" class="col-form-label">Mot de passe actuel</label>
@@ -334,8 +367,8 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                                         "id": user.id,
                                         "avatar": encoded
                                     }).then(res => {
-                                        if(!res.data.updateUser.ok) alert("An error has occurred while changing the avatar !");
-                                        else document.getElementById("avatar").style.backgroundImage = "url(data:image/jpg;base64," + encoded + ")";
+                                        if (res.data.updateUser.ok) document.getElementById("avatar").style.backgroundImage = "url(data:image/jpg;base64," + encoded + ")";
+                                        else alert("An error has occurred while changing the avatar !");
                                     });
                                 };
                             }
@@ -359,10 +392,25 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                         }
 
                         function changePassword() {
-                            console.log(old_pass.value + " -> " + new_pass.value);
+                            let formData = new FormData();
+                            formData.append("username", user.id);
+                            formData.append("old_password", old_pass.value);
+                            formData.append("new_password", new_pass.value);
+                            fetch("https://justbetter.fr/details", {
+                                method: "POST",
+                                body: formData
+                            }).then(res => {
+                                if (res.ok) {
+                                    document.getElementById("change-password-details").open = false;
+                                    old_pass.value = new_pass.value = conf_pass.value = null;
+                                }
+                                else {
+                                    res.json().then(body => alert("An error has occurred while changing the password : " + body));
+                                }
+                            });
                         }
 
-                        async function graphQL(query, variables){
+                        async function graphQL(query, variables) {
                             let req = await fetch("https://lldap.justbetter.fr/api/graphql", {
                                 method: "post",
                                 headers: {

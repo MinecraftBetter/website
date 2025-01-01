@@ -62,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (!$errors) {
         header('Location: /');
-        exit(303);
+        http_response_code(303);
+        exit();
     }
 }
 

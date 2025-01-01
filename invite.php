@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = $ldap->createAccount($_POST);
     if (!$errors) {
         header('Location: /');
-        exit(303);
+        http_response_code(303);
+        exit();
     }
 }
 
