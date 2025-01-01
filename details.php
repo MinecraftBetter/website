@@ -334,7 +334,8 @@ $userinfo = isset($_COOKIE["user_id"]) && isset($_COOKIE["token"]) ? getUserInfo
                                         "id": user.id,
                                         "avatar": encoded
                                     }).then(res => {
-                                        /* TODO: Refresh avatar */
+                                        if(!res.data.updateUser.ok) alert("An error has occurred while changing the avatar !");
+                                        else document.getElementById("avatar").style.backgroundImage = "url(data:image/jpg;base64," + encoded + ")";
                                     });
                                 };
                             }
